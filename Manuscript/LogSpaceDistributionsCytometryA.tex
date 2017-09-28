@@ -1,0 +1,308 @@
+%% Run LaTeX on this file several times to get Table of Contents,
+%% cross-references, and citations.
+
+\documentclass[11pt,a4paper,final]{article}
+\usepackage{setspace}
+\doublespacing
+%\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+
+%\usepackage{Wiley-AuthoringTemplate}
+%\usepackage[sectionbib,authoryear]{natbib}% for name-date citation comment the below line
+%\usepackage[numbers]{natbib}% for numbered citation comment the above line
+\usepackage[numbers,round]{natbib} % Round parenthesis
+
+\raggedright
+\setlength{\parindent}{0.5cm}
+%\textwidth 5.25in 
+\textheight 8.75in
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\usepackage{graphicx}
+\renewcommand{\figurename}{Fig}
+
+\begin{document}
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\nl{\\ \noindent}
+\def\nn{\\ \nonumber}
+\def\etal{\emph{et al.} }
+\newcommand{\gauss}[3]{e^{-\frac{(#3 - #2)^2}{2\sigma_{#1}^2}}}
+
+
+\begin{flushleft}
+{\Large
+\textbf\newline{Modeling of cytometry data in logarithmic space: when is a bimodal distribution not bimodal?} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Amir Erez\textsuperscript{1*},
+Robert Vogel\textsuperscript{2},
+Andrew Mugler\textsuperscript{3},
+Andrew Belmonte\textsuperscript{1,4},
+Gr\'egoire Altan-Bonnet\textsuperscript{1}
+
+
+\bigskip
+\textbf{1} Immunodynamics Group, Cancer and Inflammation Program, National Cancer Institute, National Institutes of Health, Bethesda, Maryland 20814, USA
+\\
+\textbf{2} IBM T. J. Watson Research Center, Yorktown Heights, New York 10598, USA
+\\
+\textbf{3} Department of Physics and Astronomy, Purdue University, West Lafayette, Indiana 47907, USA
+\\
+\textbf{4} Department of Mathematics, Pennsylvania State University, University Park, Pennsylvania 16802, USA
+\bigskip
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below.
+* erezam@bgu.ac.il
+\end{flushleft}
+
+\section*{Acknowledgments}
+This work was supported by Human Frontier Science Program grant LT000123/2014 (Amir Erez) and by the Intramural Research Program of the NCI, NIH.
+
+\newpage 
+
+\begin{abstract}
+Recent efforts in systems immunology lead researchers to build quantitative models of cell activation and differentiation. One goal is to account for the distributions of proteins from single-cell measurements by flow cytometry or mass cytometry as a readout of biological regulation. In that context, large cell-to-cell variability is often observed in biological quantities. We show here that these readouts, viewed in logarithmic scale may result in two easily-distinguishable modes, while the underlying distribution (in linear scale) is unimodal. We introduce a simple mathematical test to highlight this mismatch. We then dissect the flow of influence of cell-to-cell variability using a graphical model and its effect on measurement noise. Finally we show how acquiring additional biological information can be used to reduce uncertainty introduced by cell-to-cell variability, helping to clarify whether the data is uni- or bimodal. 
+This communication has cautionary implications for manual and automatic gating strategies, as well as clustering and modeling of single-cell measurements. 
+\end{abstract}
+
+
+keywords: bimodal, unimodal, peak, logarithm, gating, FCM, CyTOF
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section*{Introduction}
+
+Flow cytometry (FCM) data typically stretches across several orders of magnitude, with fluorescence intensity $I$ readily spanning values between $10^2$ and $10^5$. Although individual cells (events) are recorded as fluorescence intensity $I$, typically what is displayed to the investigator is a binned or smoothed histogram which represents an empirical probability density function (pdf) of the data. Due to the wide span of the data, binning directly the intensity $I$ is noisy since there is no single scale one can apply. Instead, when binning FCM data to create a histogram representing a pdf, it is natural to let bin sizes increase as a geometric progression, namely, to evenly bin the logarithm of the fluorescence intensity. As a result, instead of the probability $Q(I)$ (pdf) of fluorescence intensity $I$, one usually analyzes the probability (pdf) of $\log I$, which we denote $P(\log I)$. Indeed, $P(\log I)$ has many advantages: easy display of many orders of magnitude in $I$, easy to model as a two-component log-normal mixture model (as in \cite{Vogel2016}), and easy to intuitively understand the effect of changing the voltage gain on the flow-cytometer detector photo-multiplier. While such data presentation has been widely adopted in the field of cytometry out of these practical reasons, a rigorous assessment of this log-transformation reveals unwarranted features.
+
+\smallskip
+Simply plotting $Q(I)$ vs. $I$ is impractical as most of the data inevitably appears crowded against the $I=0$ axis. Thus, it is common practice to plot $P(\log I)$ or variants thereof which deal with small and negative $I$ values introduced by fluorescence compensation ({\it e.g.} "Logicle" \cite{Parks2006}, "VLog" \cite{Bagwell2016} and other transformations \cite{Finak2010}). Displaying faithfully FCM data is not easy, as the logarithmic scale and fluorescence compensation introduce problems that are easy to miss \cite{Herzenberg2006} leading to uncertainty in the number of distinct populations present in the data. Previously, attention has been given to the possibility of effects produced by logarithmic binning \cite{Novo2008}, contrasting the difference between plotting logarithmic histograms $P(\log I)$ vs. $\log I$ as opposed to rescaling the x-axis by plotting $Q(I)$ vs. $\log I$. However, an additional, potentially confusing situation seems to have been overlooked: the possible appearance of a second mode in $P(\log I)$, rendering $P(\log I)$ bimodal, while for the same data only one mode exists in $Q(I)$. This is the focus of this work.
+\smallskip
+
+When considering biological measurements, $I$ is proportional to the \emph{actual} copy number of RNA or proteins. When theoretical considerations are applied to biological systems (such as biochemical dynamics \cite{Friedman2006,Prill2015,Pal2015,Ridden2015,Mojtahedi2016,Erez2017}, mass-action chemical equilibria, cell-cycle measurements \cite{Brown2010} and Hill dose-response curves \cite{Prinz2010}), it is the copy number itself that is under consideration. Despite that, the logarithm of copy number is an appealing quantity because of its approximately Gaussian statistics, yielding insight into details easily lost if the data were to be analyzed only in linear scale.  This leads to a mismatch, where for instance models posed in linear space and data plotted in logarithmic space seem unable to be reconciled without invoking additional effects such as stochastic gene expression noise \cite{Friedman2006} and cell-to-cell variability \cite{Feinerman2008,Pelkmans2012,Cotari2013}. Even so, typically one must resort to approximations to analyze noise propagation linearly \cite{Prill2015}.
+\smallskip
+
+The difference between the convenient consideration of the logarithm of abundances and the theoretically-accurate analysis of the linear copy number renders the question of whether $Q(I)$ has one or two modes (3 extrema) relevant in the following ways: (i) the existence of 1 or 3 extrema is often used to infer the fixed points of a dynamic stochastic biochemical network \cite{Friedman2006,Pal2015,Vogel2016} and other \emph{in silico} methods \cite{Das2009} (ii) extrema are used to define cell-types in automatic (density based) gating and clustering algorithms \cite{Cron2013,ONeill2013,Anchang2014,Finak2014,Saeys2016,Chen2016}; (iii) The existence of a clearly bimodal distribution is used for manual gating ({\it e.g.} discerning between activated and un-activated cells) in a way that may appear more robust and compelling than it might truly be. Yet, immunologists have relied on FCM for over forty years to identify new cell populations, often based on manual gating of FCM data. In particular, in cell population enrichment experiments, often such markers are chosen that the (positive) signal is sufficiently well separated from the (negative) background for the two (logarithmic, linear) representations to have no mismatch in their number of peaks. At some level, these experiments succeed in gating the FCM data because typically only these high signal-to-noise markers are used, based on prior knowledge. However, not all FCM experiments enjoy such favorable conditions. Moreover, as the field advances, and more and more markers are acquired, some of these will inevitably have lower signal to noise resolution. The purpose of this manuscript is not to claim that \emph{all} logarithmic gates are problematic. Instead, we caution here of a situation where peaks that appear sufficiently separated in logarithmic space may yet mislead. We propose a simple test to warn if for a given sample, this situations arises.
+
+\smallskip
+The rest of this paper is composed of two parts. In the first part, we point out and analyze the situation where a mismatch between the two representations can happen: we formally state the problem using theoretical modeling of FCM data as a mixture of two log-normal distributions (colloquially the "negative" and "positive" modes), explicitly show situations where two modes appear in $P(\log I)$ while only one mode exists in $Q(I)$, and demonstrate this confounding effect on experimental data. In the second part, we analyze the role of cell-to-cell variability in experimental data and show how by measuring a suitable extra dimension one can factor out some of this variability, thus reducing the broadness of the modes sufficiently so as to reduce the mismatch between the two representations. Thus we provide a prescription to design experiments and analyze them so as to resolve the unimodal {\it vs.} bimodal discrepancy. 
+
+\newpage
+
+\section*{Methods - theory}
+Given the pdf $P(\log I)$, one can formally derive $Q(I)$ as \cite{Mukhopadhyay2000},
+\bea 
+\label{eq:P2Q}
+Q(I) &=& P(\log I) \left\vert \frac{d}{dI} \log I \right\vert \nn
+ &=& \frac{1}{I}P(\log I) = e^{-y} P(y)\,,
+\eea
+with $\log I\equiv y$. This relation serves us both in this theoretical section and in the experimental \emph{Results} section, where we estimate the empirical distribution for $Q(I)$ using this relation. We now address the question: when is $Q(I)$ unimodal while $P({\log I})$ is multimodal ?
+\smallskip
+
+Cytometry data is often amenable to modeling as a log-normal mixture ({\it e.g.} \cite{Vogel2016}). To demonstrate the log/linear mismatch we consider a mixture of two populations, characterized by the distribution of intensity. We define $P(\log I)$ as follows:
+\be
+\label{eq:LogNormalMix}
+P(\log I) = \frac{(1-\alpha)}{\sqrt{2\pi\sigma_1^2}}e^{-\frac{(\log I - y_1)^2}{2\sigma_1^2}} + \frac{\alpha}{\sqrt{2\pi\sigma_2^2}}e^{-\frac{(\log I - y_2)^2}{2\sigma_2^2}},
+\ee
+with $y_{1,2}=\log I_{1,2}$ which are the loci of the centers of the left and right Gaussians in log-space, respectively, and $\sigma_{1,2}$ the log-space standard deviations. We then define $Q(I)=\frac{1}{I}P(\log I)$ as in Eq.~\ref{eq:P2Q}. 
+\smallskip
+
+In Fig.~\ref{fig:PlotsLinearLog}, to illustrate with typical measurement values, we set $I_1=100$ and $I_2=1000$ (arbitrary units) and $\alpha=0.5$, while varying $\sigma_1=\sigma_2$. This figure presents the three cases we wish to contrast: on the left column, both $P(\log I)$ and $Q(I)$ are bimodal; in the central column, $P(\log I)$ is bimodal whereas $Q(I)$ is unimodal; on the right column, both $P(\log I)$ and $Q(I)$ are unimodal, a situation which we examine in more detail in Eq.~\ref{eq:Plogy3Maxima}. Moreover, we see an example where even when both are bimodal (left column), the loci of the modes are different. 
+\smallskip
+
+\begin{figure}[!ht]
+ \centering
+  \includegraphics[clip,width=1\hsize]{Fig1.png}
+  \caption{\textbf{Log-normal mixture showing the mismatch in the number of peaks.} \textbf{Top row, red:} $P(\log I)$ vs. $\log I$ normalized to max. \textbf{Middle row, magenta:} $Q(I)$ vs. $I$ normalized to max, and plotted on a narrower range. \textbf{Bottom row, blue:} $Q(I)$ vs. $\log I$ normalized to max, rescaling the x-axis as in Ref.~\cite{Novo2008}. In the central column where $\sigma_1=\sigma_2=0.8$, $P(\log I)$ shows explicit bimodality whereas $Q(I)$ is unimodal. \textbf{Right column:} in this case, the variance $\sigma^2$ is large enough (see Eq.~\ref{eq:Plogy3Maxima}) that $P(\log I)$ has only one mode even though it is modeled as a mixture. In all cases: $I_1=100,\,I_2=1000,\,\alpha=0.5$ varying $\sigma_{1,2}=\{0.4,0.8,1.2\}$ (left to right columns, respectively). Leftmost column shows axes. }
+  \label{fig:PlotsLinearLog}
+\end{figure}
+
+Determining whether empirical data is multimodal is a difficult task (eg., \cite{Silverman1981}). Recently, this issue has been revisited in detail \cite{Johnsson2017}. In the context of modeling FCM data \cite{Das2009}, it was addressed by using Hartigan's dip test for unimodality \cite{Hartigan1985}. Later, as a benchmark to our method we report the results of Hartigan's test on the experimental data. More details on Harigan's test can be found in the \emph{Supporting information}.
+\smallskip
+
+We define $y=\log I$ and proceed to find the number of extrema for $P(y)$ and $Q(I)$. We do this by recasting Eq.~\ref{eq:LogNormalMix} and its derivatives into the functions $A(y),B_1(y),B_3(y)$. Full mathematical details can be found in the \emph{Supporting information}. We introduce the following functions,
+\bea 
+\label{eq:extrema}
+A(y) &=& \left(\frac{\alpha}{1-\alpha}\right)\left(\frac{\sigma_1}{\sigma_2}\right) e^{\frac{(y-y_1)^2}{2 \sigma_1^2}-\frac{(y-y_2)^2}{2 \sigma_2^2}}  \nn
+B_1(y) &=& \frac{\frac{y-y_1}{\sigma_1^2}+1}{\frac{y_2-y}{\sigma_2^2}-1} \nn
+B_3(y) &=& \frac{(y-y_1)/\sigma_1^2}{(y_2-y)/\sigma_2^2}\,.
+\eea
+To find the extrema of $Q(I)$, one must find the solutions $y^*$ for $B_1(y^*)=A(y^*)$. Similarly, for the extrema of $P(\log I)$ one must solve $B_3(y^*)=A(y^*)$.
+
+\smallskip
+$A(y)$ is the ratio of the two Gaussians in Eq.~\ref{eq:LogNormalMix} and is therefore always non-negative; this implies that any extremum $y_*$ must satisfy $B_1(y_*)\ge 0$ and $B_3(y_*)\ge 0$. We note that the condition for extrema in $Q(I)$ requires that $\frac{d}{dy}P(y)=P(y)$ whereas, of course, extremizing $P(\log I)$ sets its derivative to zero, demonstrating the fact that the loci of the modes for $P(\log I)$ and $Q(I)$ are manifestly different. The region where the log-space distribution shows a second mode occurs when for $B_3(y^*)=A(y^*)$ admits three solutions whereas $B_1(y^*)=A(y^*)$ admits only one solution. Given that these equations are transcendental, a graphical way to asses the number of solutions is to plot $A(y),B_1(y),B_3(y)$ and count the number of times $B_1$ and $B_3$ intersect $A$.\smallskip
+
+In Fig.~\ref{fig:ExtremaSolutions}, we present an example of this graphical method. The mismatch between the number of extrema of $P(\log I)$ and $Q(I)$ is apparent whenever (red curve) $B_3(y)$ intersects $A$ at 3 points, whereas (blue curve) $B_1(y)$ only intersects $A$ once. \smallskip
+
+\begin{figure}[!ht]
+ \centering
+  \includegraphics[clip,width=1\hsize]{Fig2.png}
+  \caption{\textbf{Graphical solution to count the number of extrema.} When the red (blue) curves intersect the dashed black line, $P(\log I)$ ($Q(I)$) are extremized. Dashed black: $A(y)$, blue: $B_1(y)$ and red: $B_3(y)$. The mismatch between the number of extrema of $P(\log I)$ and $Q(I)$ is apparent when the red curve intersects $A$ at 3 points, whereas the blue curve only intersects $A$ once. In both cases, the loci of the extrema are different for the two distributions. The plots along the diagonal (which correspond to the cases in Fig.~\ref{fig:PlotsLinearLog}) show the case $\sigma_1=\sigma_2$ which simplifies $A(y)$ to a straight line (the general case being a parabola) in these axes.}
+  \label{fig:ExtremaSolutions}
+\end{figure}
+
+In the plots along the diagonal, we have $\sigma_1=\sigma_2$ (as in Fig.~\ref{fig:PlotsLinearLog})  which simplifies $A(y)$ since the quadratic (Gaussian) terms cancel, leaving only an exponential. This leads to a simple criterion to determine whether $P(\log I)$ itself admits one or two modes - previously in Fig.~\ref{fig:PlotsLinearLog}(right) we saw an example where $P(\log I)$ is unimodal despite being generated from a mixture. Graphically, we see that for $B_3=F$ to have 3 solutions, $\log B_3(y)$ has to have a slope less than $\log A(y)$ about the extremum $y_*$. In other words, $\left.\frac{d}{dy} \log B_3(y)\right\vert_{y_*} \le \left.\frac{d}{dy} \log A(y)\right\vert_{y_*}$, with equality as the threshold between 1 and 3 extrema. This leads to the following intuitive criterion,
+\be 
+\label{eq:Plogy3Maxima}
+(y_* - y_1)(y_2 - y_*) \ge \sigma ^2 \,\,\Longrightarrow \,\, \mbox{3 extrema for } P(\log I)\,,
+\ee
+which states that for $P(\log I)$ to appear bimodal, it must have an extremum ($y_*$) such that the variance of the individual Gaussian components of $P(\log I)$ must be smaller than the distance between $y_*$ and the Gaussian centers. Substituting for $y_* \approx \log 316$, $y_1 = \log 100$ and $y_2=\log 1000$ and $\sigma^2 = 1.44$ we see that the criterion in Eq.~\ref{eq:Plogy3Maxima} is not satisfied and indeed in Fig.~\ref{fig:PlotsLinearLog}(right) and Fig.~\ref{fig:ExtremaSolutions}(bottom right) we see that $P(\log I)$ has only one mode. A similar condition can be derived for $Q(I)$, that is, $\left.\frac{d}{dy} \log B_1(y)\right\vert_{y_*} \le \left.\frac{d}{dy} \log A(y)\right\vert_{y_*}$, such that,
+\be 
+\label{eq:QI3Maxima}
+(y_* - y_1+\sigma^2)(y_2 - y_* - \sigma^2) \ge \sigma ^2\,\,\Longrightarrow \,\,\mbox{3 extrema for } Q(I)\,,
+\ee \smallskip
+it is, however, hard to compare the two bounds analytically because the $y_*$ which extremizes $P(\log I)$ is different from the $y_*$ which extremizes $Q(I)$.
+
+\newpage
+
+\section*{Results - experiments}
+
+We now apply our analysis to experimental data, namely the measured distribution of Extracellular Signal-regulated Kinase (ERK) phosphorylation (ppERK) signaling in CD8+ primary mouse T-cells responding to antigens and inhibited by the SRC inhibitor Dasatinib. These data were acquired in exactly the same manner as the experiments in Ref.~\cite{Vogel2016}, for brevity we refer the reader there for all experimental details. In Fig.~\ref{fig:Experiment}(A) we see how a commercially-available analysis software (FlowJo \cite{FlowJo}) plots the distribution of ppERK in such an experiment, which clearly shows a bimodal structure. Fig.~\ref{fig:Experiment}(B) plots those same data, formally $P(\log I) := \hat{f}_{\log I}^{(8751)}$, the probability density estimated from the data by taking the logarithm of the intensity of 8751 cells and binning it in bins of size 0.2. Our procedure for estimating $P(\log I)$ gives the two modes as in FlowJo (red dots) whereas $Q(I)$ (derived using Eq.~\ref{eq:P2Q}) has a single mode (blue dots). We fit $P(\log I)$ as a Gaussian mixture. This is followed in Fig.~\ref{fig:Experiment}(C) by the same extrema analysis as in Fig.~\ref{fig:ExtremaSolutions}, revealing that indeed $Q(I)$ has a single maximum.
+\smallskip
+
+\begin{figure}[!ht]
+ \centering
+  \includegraphics[width=1\linewidth]{Fig3.png}
+  \caption{\textbf{Analysis of experimental data reveals the effect we describe in a real scenario. }\textbf{(A)} Histogram of ppERK as plotted by FlowJo \cite{FlowJo}; \textbf{(B)} Histograms for $P(\log I)$ (red,dots) and $Q(I)$ (blue,dots) vs. $\log I$ as estimated from the data binned logarithmically. Note that plotting $Q(I)$ vs. $\log I$ is somewhat unusual but allows both $P$ and $Q$ to be plotted on the same axis. The red line shows the result of fitting $P(\log I)$ to a gaussian mixture model (Eq.~\ref{eq:LogNormalMix}), and the blue line is the estimate for $Q(I)$ from $P(\log I)$ according to Eq.~\ref{eq:P2Q}. The blue star indicates the location of the only maximum for $Q(I)$ obtained from Eq. \ref{eq:extremaQ}, despite the obvious two maxima in $P(\log I)$ (red). Hartigan's unimodality p-values for $\log I$ (red) and $I$ (blue) are taken directly from the data without binning, corroborating that $\log I$ is bimodal whereas $I$ is unimodal. \textbf{(C)} Graphic solution of the extrema conditions as in Fig.~\ref{fig:ExtremaSolutions} explicitly reveals the three solutions for $P(\log I_*)$ (red line intersects black dashed) as opposed to the single solution for $Q(I_*)$ (the blue line intersects the black dashed line up beyond the plotted area, solution also plotted as blue star in the middle plot), indicating that $Q(I)$ has only one mode.}
+  \label{fig:Experiment}
+\end{figure}
+Given the prevalence and success of manual gating of FCM data in many situations, we wondered whether gating in logarithmic scale could be justified \emph{a posteriori}, based on biological knowledge. In the final part of our analysis, we aimed to include additional information such that the biological significance of the distributions in our single-cell measurements is better captured. 
+
+\smallskip
+We briefly sketch what follows: by considering both ERK1 and ppERK levels, (the two being biologically related and experimentally correlated), we demonstrate that dividing one by the other ameliorates the mismatch between the logarithmic and linear representations. This is done by examining their \emph{joint} probability density function $P_2$; we suggest a probabilistic graphical model that describes the correlations in the system and their dependence on cell-to-cell variability; we suggest a way to normalize for cell-to-cell variability, such that the mismatch (resulting from increased uncertainty) between logarithmic and linear gates is resolved. We then generalize our example and provide a simple experimental and theoretical framework that allows less ambiguous determination of positive/negative gates. 
+
+\smallskip
+In Fig.~\ref{fig:ppERKvsERK1heatmap}(A), we show the experimental data we will use in our proposed solution. Here we returned to our single-cell measurements of ERK phosphorylation in primary mouse T cells in Ref.~\cite{Feinerman2008}. We show a heat map of the \emph{joint} distribution of ppERK ($I_{ppERK}$) and total ERK1 ($I_{ERK1}$) expression in mouse CD8+ T-cells. We estimate their joint distribution by using a kernel density estimator \cite{botev2010}, which is used only for presentation purposes and for demonstrating their conditional independence (Fig.~\ref{S1_Fig}).
+Notably, whereas the two modes of ppERK significantly overlap when plotted in the marginal distribution $P(\log I_{ppERK})$, ppERK expression correlates with total ERK1 levels in their joint distribution $P_2(\log I_{ppERK},\log I_{ERK1})$. The relation in Eq.~\ref{eq:P2Q} can be generalized to $P_2(\log I_{ppERK},\log I_{ERK1})$ (see, eg., \cite{Mukhopadhyay2000}), however, it will not be used in this manuscript.
+
+\smallskip
+To estimate the marginal densities $P(\log I_{ppERK})$ and $P(\log I_{ERK1})$ we bin the log-intensity of 24449 cells.  Each cell's state encodes another \emph{latent} variable, its activation status - which tells if the cell has been successfully activated by the stimulus. To deduce the activation status, it is common practice to use manual gating of the data by drawing a boundary between the active and inactive states. To account for the correlation between ERK1 and ppERK we consider two manual gating strategies: (i) perpendicular gating (dashed red) according to $P(\log I_{ppERK})$ with $I_{ppERK}>ppERK_*$ considered an activated cell, and (ii) diagonal gating according to the apparent correlation in $P_2$ (dashed grey). We set the diagonal gate with a slope of unity, meaning that we take the dividing line, reflecting  proportionality $ppERK\propto ERK1$, as a good way to partition the two states. We define "Inactive" to the left of the dashed line, and "Active" to the right of it.
+\smallskip
+
+To understand the structure of these data, it is important to characterize explicitly the dependency structure of our observables (ERK1, ppERK), the latent activation status, and the influence of external factors on these three. The existence of two peaks in ppERK which appear distinct from each other but correlated with ERK1 levels, guides us to use a Bayesian network to capture these features in the data as a graphical model. First - we test whether ERK1 and the cell's activation status are independent. In Fig.~\ref{S1_Fig} we see that whereas independence implies that $P(\log ERK1) = P(\log ERK1 \vert Activation)$, in fact there is a weak dependence between them regardless of whether we employ a vertical (red) or a diagonal (grey) gate (the diagonal gate showing a weaker dependence). The weak dependence between activation state and ERK1 levels is reasonable, if we account for cell-to-cell variability, since for a given stimulus some cells inevitably respond differently from the typical cell \cite{Spencer2009}. We summarize the causal structure for this system in Fig.~\ref{fig:ppERKvsERK1heatmap}(B) which depicts a probabilistic graphical model \cite{Koller2009} of the flow of influence from cell-to-cell variability and activation signal, to ERK1 levels and activation status, and finally to the distribution of ppERK. We depict the pair ERK1-ppERK in a template (rectangles), to suggest to the reader the existence of multiple other pairs. Importantly, in what follows we show how to better resolve the log-space peak; this recipe, together with the model in Fig.~\ref{fig:ppERKvsERK1heatmap}(B) can be used \emph{a priori} in automatic gating and clustering algorithms to prevent some of the mismatch between logarithmic and linear binning strategies. For stochastic modeling, such a structure presents an opportunity to analyze the structure and propagation of noise in the system \cite{Prill2015,Ching2017}.
+\smallskip
+
+We treat the broadness of ppERK modes as generated by cell-to-cell variability in total ERK1 content - a reasonable assumption since the noise in the phosphorylation of ERK is negligible in comparison \cite{Filippi2016}. We further neglect the indirect influence between activation status and ERK1 levels due to its weakness (checked in Fig.~\ref{S1_Fig}). Thus we approximate that the conditional independence between ERK1 and activation status (given that both are influenced by cell-to-cell variability) is true independence. This implies an approximately linear relation $I_{ppERK} \propto I_{ERK1}$ given activation status.
+%This gives the following linear relation between ERK1 and ppERK,
+%\begin{align}
+%    \ce{ERK1 <=> MEK + ERK1 -> ppERK} \nn
+%    \ce{ppERK -> ERK1}
+%\end{align}
+We define the normalized intensity $\tilde{I} = I_{ppERK}/I_{ERK1}$ as the ratio of ppERK to ERK1 intensity, thereby eliminating the linear dependence of ppERK on ERK1 levels and reducing uncertainty due to cell-to-cell variability. The resulting $P(\log \tilde{I})$ may boast a sufficiently reduced noise in ppERK such that a clear bimodal signature appears regardless of logarithmic or linear binning of $\tilde{I}$. In Fig.~\ref{fig:NormppERKbyERK} we show such an example, where in Fig.~\ref{fig:NormppERKbyERK}(A,B), $P(\log I)$ and $Q(I)$ do not agree on the number of modes, whereas in Fig.~\ref{fig:NormppERKbyERK}(C,D) $\tilde{I} = I_{ppERK} / I_{ERK1}$ do agree. These data have order 25,000 events and so, similarly to Fig.~\ref{fig:CheckHartigan}, Hartigan's test may not identify the number of peaks correctly, as is indicated in the $p_u$ values.
+
+Thus we demonstrate how by suitably accounting for cell-to-cell variability one can reduce the measured noise so as to circumvent the mismatch in the number of modes between the logarithmic and linear treatment. For testing bimodality, whereas our method relies on fitting a Gaussian mixture, existing statistical tests, eg., Hartigan's test, require no fitting yet may lack statistical power when applied to typical experimental situations. 
+\smallskip
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Fig4.png}
+   \caption{\textbf{Analysis of experimental data with two correlated measurements.} \textbf{(A)} The joint distribution $P_2(\log I_{ppERK},\log I_{ERK1})$ as a heat map with its marginals plotted on the top and on its right. The correlation between ppERK and ERK1 levels is clear in the data. Dashed red (grey) lines are proposed manual gates according to the marginal (joint) distributions $P(\log I_{ppERK})$ $\left(P_2(\log I_{ppERK},\log I_{ERK1})\right)$. \textbf{(B)} Bayesian network depicted as a graphical model to show the flow of influence on the measurement of ppERK. The pair ERK1 and ppERK are in a template to suggest that there exist other pairs of correlated observables that depend on activation status and cell-to-cell variability.}
+   \label{fig:ppERKvsERK1heatmap}
+\end{figure}
+
+
+
+\smallskip
+\begin{figure}
+ \centering
+   \includegraphics[width=1\linewidth]{Fig5.png}  
+  \caption{\textbf{By dividing ppERK readings by ERK1, we can ameliorate the mismatch between the two representations.} \textbf{(A)} $P(\log I_{ppERK})$ and $Q(I_{ppERK})$ vs. $\log I_{ppERK}$ (dots: data, lines: Gaussian mixture fit) together with \textbf{(B)} their extrema analysis, showing that the second mode in log ppERK does not exist if the data is linearly binned. \textbf{(C)} The same treatment but for $\tilde{I} = I_{ppERK}/I_{ERK1}$, \textbf{(D)} shows that both $\tilde{I}$ and $\log \tilde{I}$ have two modes, thus normalizing ppERK levels by total ERK1 maintains the bimodal structure both in $P(\log \tilde{I})$ and in $Q(\tilde{I})$. }
+  \label{fig:NormppERKbyERK}
+\end{figure}
+
+\smallskip
+
+\newpage
+\section*{Discussion}
+We conclude our analysis by making a more intuitive argument. Above, we have demonstrated the theoretical and experimental existence of a situation where $P(\log I)$ has two modes when $Q(I)$ has only one. But how does this \emph{come about} ? Intuitively, by binning in logarithmic scale, we are effectively making the bin sizes grow as $I$ increases. A larger bin can only lead to a higher count in that bin and so we might stumble upon a regime where this creates a quasi-mode. This situation and the same logic applies also when using more advanced logarithmic-like transformations, (eg., Logicle \cite{Parks2006} and Vlog \cite{Bagwell2016} ), as is demonstrated in Fig.~\ref{fig:Experiment}A. 
+ 
+%Probing further, we established a simple criterion (Eq.~\ref{eq:Plogy3Maxima}) where by making the underlying Gaussian mixture composed of too-close-together Gaussians, even in $P(\log I)$ there exists only one peak.
+
+\smallskip
+The scale-dependent bimodality as demonstrated in Fig.~\ref{fig:Experiment} and Fig.~\ref{fig:NormppERKbyERK}(A,B) may be not uncommon. Specifically, one must take extra care when attempting to manually gate, automatically cluster or build dynamical models which rely on an apparent bimodal structure, as it might depend on whether the data was log-transformed or not. This becomes increasingly relevant as cytometry moves forward to higher dimensional measurements which become tractable only with automatic gating schemes. Instead, one might consider plotting $Q(I)$ on the log-log scale, a presentation which preserves the number of maxima, at the expense of the measure of the distribution. It is possible to ameliorate the mismatch between the two scales, as we demonstrate in Fig.~\ref{fig:NormppERKbyERK}(C,D), if one can simultaneously measure correlated observables (in our example, ppERK and ERK1). This allows to control for cell-to-cell variability, increasing the resolution of the data. Recently, this favorable scenario has become more attainable with the introduction of mass cytometry - where one can rely on a large number of channels without compromising the FCM panel. Based on the analysis carried out in this paper, we conjecture that such extra channels, chosen wisely, can provide automatic clustering/gating algorithms the right information needed to make more reliable clustering and population defining. This is a simple way to introduce knowledge of the biological structure of the data into otherwise objective clustering algorithms, without compromising their objectivity. We propose and test some features of a graphical model that captures the structure of such dependencies in a way potentially useful for those interested in automatic gating and clustering algorithms. 
+
+\smallskip 
+Logarithmic transform of FCM intensity values is the usual practice, but for some observations, eg., the FSC and SSC channels, linear scale is typically used. In such cases, there is no danger of mismatch between presentation. When FCM data are logarithmically distributed, though we caution on the use of $P(\log I)$, we find it remarkable how well the distribution of biological quantities resembles a log-normal mixture. 
+%This highlights the deep and still little understood connection between distributions observed in living things and their relation to the logarithm of abundance, a subject likely to puzzle researchers for years to come.
+
+\section*{Conflicts of Interest}
+The authors declare that there are no conflicts of interest.
+
+
+%\bibliographystyle{unsrt}
+\bibliographystyle{cytA}
+
+\bibliography{LogSpaceLatexPaper}
+
+\newpage
+\section*{Supporting information}
+%
+%\paragraph*{S1 Fig}
+%\label{S1_Fig}
+
+\subsection*{Finding the extrema of a log-normal mixture}
+It is possible to discern between one or three extrema of the distribution $P(\log I)$, corresponding to one or two modes (respectively) by counting the number of solutions for $\frac{d}{d\log I}P(\log I) = 0$. Similarly, $\frac{d}{dI}Q(I)=0$ can have either one or three solutions. This raises the possibility of there being three extrema (two modes) for $P(\log I)$ whereas only one mode in $Q(I)$. We explicitly evaluate the extrema of the mixture of log-normal distributions by solving,
+%
+\bea \nonumber
+  \left.\frac{d P(y)}{dy} \right\vert_{y=y_*}&=&
+  -\frac{(y_* - y_1)}{\sigma_1^2} \frac{(1-\alpha)}{\sqrt{2\pi}\sigma_1}  \gauss{1}{y_1}{y} -
+  \frac{(y_* - y_2)}{\sigma_2^2} \frac{(\alpha)}{\sqrt{2\pi}\sigma_2} \gauss{2}{y_2}{y}\nonumber\\
+  &=& 0\nonumber
+\eea
+%
+which by algebraic rearrangement,
+%
+\be 
+  \label{eq:extremaP}
+  \underbrace{\frac{(y_* - y_1) / \sigma_1^2}{(y_2-y_*)/\sigma_2^2}}_{B_3(y_*)} =
+    \underbrace{\frac{\sigma_1}{\sigma_2}
+    \left(\frac{\alpha}{1-\alpha}\right)
+    e^{\frac{(y_*-y1)^2}{2\sigma_1 ^2}}\gauss{2}{y_2}{y_*}}_{A(y_*)}\,,
+\ee
+%
+provides a more transparent form.  
+
+Here we refer to the left-hand-side and right-hand-side as $B_3(y)$ and $A(y)$, respectively. In like, computing the extrema of the linear scale distribution amounts to $\left.\frac{d Q(I)}{dI} \right\vert_{\log I= y_*} = 0$, which by change of variable is equivalent to,
+%
+\be
+\label{eq:QExtremaStrange}
+P(y_*) = \left.\frac{d P(y)}{dy}\right\vert_{y = y_*}\,,
+\ee
+%
+and by substitution,
+%
+\be
+  \label{eq:extremaQ}
+  \underbrace{\frac{\frac{y_*-y_1}{\sigma_1^2}+1}{\frac{y_2-y_*}{\sigma_2^2}-1}}_{B_1(y_*)} = A(y_*) 
+\ee
+%
+We refer to the quantity on the left-hand-side, $B_1(y)$.
+
+\subsection*{Hartigan's dip test}
+Briefly, Hartigan's dip statistic measures the maximum difference between the empirical distribution and the unimodal distribution that minimizes that maximum difference. This is compared to the appropriate null distribution which is, in this case, the uniform distribution, to give $p_u$, a p-value for unimodality.
+
+As a check for the predictive power of Hartigan's test with regards to experimental data, we apply it on a log-normal mixture comparing its predictive power as a function of the number of tests and number of events in each test \cite{NicPrice}. For this, we draw events from $Q(I)$ by using MATLAB's \emph{lognrnd} function for each of the two log-normal distributions. In Fig.~\ref{fig:CheckHartigan}, we test it on the situation in Fig.~\ref{fig:ExtremaSolutions}(top,middle) in which $Q(I)$ is weakly bimodal, meaning that its bimodality is nearly marginal ($\sigma_1=0.4$ and $\sigma_2=0.8$). The Hartigan probability of unimodality ($p_u$) is not sensitive to the number of bootstrap tests in a reasonable range but becomes strongly predictive of the (weak) bimodality only when there are more than $10^5$ events. Such an abundance of cells may not always be available in typical FCM data, especially for sub-populations which have been selected (gated) and may comprise only a small fraction of all the cells acquired. Fig.~\ref{fig:CheckHartigan} supports that in such weakly bimodal situations, Hartigan's p-value should be treated cautiously, a situation which we encounter in Fig.~\ref{fig:NormppERKbyERK}. \smallskip
+
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[clip,width=1\hsize]{Fig6.png}
+  \caption{\textbf{Testing Hartigan's p-value $p_u$ for unimodality on a weakly bimodal log-normal mixture.} The heat-map shows $p_u$ as a function of the number of bootstrap tests and number of events in each test, for $\sigma_1=0.4$ and $\sigma_2=0.8$ as in Fig.~\ref{fig:ExtremaSolutions}(top,middle). With less than $\sim10^5$ events, Hartigan's test for this case may misidentify the number of peaks.}
+  \label{fig:CheckHartigan}
+\end{figure}
+
+\subsection*{Relation between ERK1 level and activation status}
+\begin{figure}[!htb]
+ \centering
+   \includegraphics[width=1\linewidth]{Fig7.png}  
+  \caption{{\bf Test for weak dependence of ERK1 and activation status.} Whereas independence implies that $P(\log ERK1) = P(\log ERK1 \vert Activation)$, in fact there is a weak dependence between them regardless of whether we employ a vertical (red, defined by threshold value $ppERK_*$) or a diagonal (grey) gate (the diagonal gate showing a weaker dependence); this is observed directly by noting that the different distributions in Fig.~\ref{S1_Fig} do not lie on top of each other. To quantify this difference, the inset shows the mutual information between $P(\log ERK1)$ and $P(\log ERK1 | Activation)$, with the circle pointing out the particular concentration of stimulus (out of all concentrations used in Ref.~\cite{Feinerman2008}) we chose to plot in this example. The chosen concentration has the highest mutual information, {\it i.e.}, the lowest ability to discern between the active and inactive states.}
+  %\caption{\textbf{By dividing ppERK readings by ERK1, we can ameliorate the mismatch between the two representations.} \textbf{(A)} $P(\log I)$ and $Q(I)$ vs. $\log I$ (dots: data, lines: gaussian mixture fit) together with \textbf{(B)} their extrema analysis, showing that the second mode in log ppERK does not exist if the data is linearly binned. \textbf{(C)} The same treatment but for $\tilde{I} = I_{ppERK}/I_{ERK1}$, \textbf{(D)} shows that both $\tilde{I}$ and $\log \tilde{I}$ have two modes, thus normalizing ppERK levels by total ERK1 maintains the bimodal structure both in $P(\log \tilde{I})$ and in $Q(\tilde{I})$. }
+  \label{S1_Fig}
+\end{figure}
+
+
+\end{document}

@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: LogSpaceDistributionsCytometryA.aux
+The style file: cytA.bst
+Database file #1: LogSpaceLatexPaper.bib
+You've used 35 entries,
+            2358 wiz_defined-function locations,
+            762 strings with 10987 characters,
+and the built_in function-call counts, 39100 in all, are:
+= -- 4582
+> -- 496
+< -- 1
++ -- 179
+- -- 144
+* -- 2571
+:= -- 3673
+add.period$ -- 103
+call.type$ -- 35
+change.case$ -- 33
+chr.to.int$ -- 0
+cite$ -- 35
+duplicate$ -- 4845
+empty$ -- 3163
+format.name$ -- 173
+if$ -- 8390
+int.to.chr$ -- 0
+int.to.str$ -- 35
+missing$ -- 346
+newline$ -- 176
+num.names$ -- 35
+pop$ -- 2273
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 130
+stack$ -- 0
+substring$ -- 6257
+swap$ -- 753
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 256
+width$ -- 37
+write$ -- 377

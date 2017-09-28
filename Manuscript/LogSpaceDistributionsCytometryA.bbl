@@ -1,0 +1,200 @@
+\begin{thebibliography}{10}
+
+\bibitem{Vogel2016}
+Vogel RM, Erez A, and Altan-Bonnet G.
+\newblock Dichotomy of cellular inhibition by small-molecule inhibitors
+  revealed by single-cell analysis.
+\newblock Nature Communications 2016;\hspace{0pt}7:12428.
+
+\bibitem{Parks2006}
+Parks DR, Roederer M, and Moore WA.
+\newblock A new “logicle” display method avoids deceptive effects of
+  logarithmic scaling for low signals and compensated data.
+\newblock Cytometry Part A 2006;\hspace{0pt}69A:541--551.
+
+\bibitem{Bagwell2016}
+Bagwell CB, Hill BL, Herbert DJ, Bray CM, and Hunsberger BC.
+\newblock Sometimes simpler is better: Vlog, a general but easy-to-implement
+  log-like transform for cytometry.
+\newblock Cytometry Part A 2016;\hspace{0pt}89:1097--1105.
+
+\bibitem{Finak2010}
+Finak G, Perez JM, Weng A, and Gottardo R.
+\newblock Optimizing transformations for automated, high throughput analysis of
+  flow cytometry data.
+\newblock BMC Bioinformatics 2010;\hspace{0pt}11:546.
+
+\bibitem{Herzenberg2006}
+Herzenberg LA, Tung J, Moore WA, Herzenberg LA, and Parks DR.
+\newblock Interpreting flow cytometry data: a guide for the perplexed.
+\newblock Nat Immunol 2006;\hspace{0pt}7:681--685.
+
+\bibitem{Novo2008}
+Novo D and Wood J.
+\newblock Flow cytometry histograms: Transformations, resolution, and display.
+\newblock Cytometry Part A 2008;\hspace{0pt}73A:685--692.
+
+\bibitem{Friedman2006}
+Friedman N, Cai L, and Xie XS.
+\newblock Linking stochastic dynamics to population distribution: An analytical
+  framework of gene expression.
+\newblock Phys Rev Lett 2006;\hspace{0pt}97:168302--.
+
+\bibitem{Prill2015}
+Prill RJ, Vogel R, Cecchi GA, Altan-Bonnet G, and Stolovitzky G.
+\newblock Noise-driven causal inference in biomolecular networks.
+\newblock PLOS ONE 2015;\hspace{0pt}10:e0125777.
+
+\bibitem{Pal2015}
+Pal M, Ghosh S, and Bose I.
+\newblock Non-genetic heterogeneity, criticality and cell differentiation.
+\newblock Physical Biology 2015;\hspace{0pt}12:016001.
+
+\bibitem{Ridden2015}
+Ridden SJ, Chang HH, Zygalakis KC, and MacArthur BD.
+\newblock Entropy, ergodicity, and stem cell multipotency.
+\newblock Phys Rev Lett 2015;\hspace{0pt}115:208103.
+
+\bibitem{Mojtahedi2016}
+Mojtahedi M, Skupin A, Zhou J, Castaño IG, Leong-Quong RYY, Chang H, Trachana
+  K, Giuliani A, and Huang S.
+\newblock Cell fate decision as high-dimensional critical state transition.
+\newblock PLOS Biology 2016;\hspace{0pt}14:e2000640.
+
+\bibitem{Erez2017}
+{Erez} A, {Byrd} TA, {Vogel} RM, {Altan-Bonnet} G, and {Mugler} A.
+\newblock {Criticality of biochemical feedback}.
+\newblock ArXiv 170304194 2017;\hspace{0pt}.
+
+\bibitem{Brown2010}
+Brown MR, Summers HD, Rees P, Smith PJ, Chappell SC, and Errington RJ.
+\newblock Flow-based cytometric analysis of cell cycle via simulated cell
+  populations.
+\newblock PLOS Computational Biology 2010;\hspace{0pt}6:e1000741.
+
+\bibitem{Prinz2010}
+Prinz H.
+\newblock Hill coefficients, dose-response curves and allosteric mechanisms.
+\newblock Journal of Chemical Biology 2010;\hspace{0pt}3:37--44.
+
+\bibitem{Feinerman2008}
+Feinerman O, Veiga J, Dorfman JR, Germain RN, and Altan-Bonnet G.
+\newblock Variability and robustness in t cell activation from regulated
+  heterogeneity in protein levels.
+\newblock Science 2008;\hspace{0pt}321:1081--1084.
+
+\bibitem{Pelkmans2012}
+Pelkmans L.
+\newblock Using cell-to-cell variability{\textemdash}a new era in molecular
+  biology.
+\newblock Science 2012;\hspace{0pt}336:425--426.
+
+\bibitem{Cotari2013}
+Cotari JW, Voisinne G, Dar OE, Karabacak V, and Altan-Bonnet G.
+\newblock Cell-to-cell variability analysis dissects the plasticity of
+  signaling of common {gamma} chain cytokines in t cells.
+\newblock Sci Signal 2013;\hspace{0pt}6:ra17--.
+
+\bibitem{Das2009}
+Das J, Ho M, Zikherman J, Govern C, Yang M, Weiss A, Chakraborty AK, and Roose
+  JP.
+\newblock Digital signaling and hysteresis characterize ras activation in
+  lymphoid cells.
+\newblock Cell 2009;\hspace{0pt}136:337--351.
+
+\bibitem{Cron2013}
+Cron A, Gouttefangeas C, Frelinger J, Lin L, Singh SK, Britten CM, Welters MJP,
+  van~der Burg SH, West M, and Chan C.
+\newblock Hierarchical modeling for rare event detection and cell subset
+  alignment across flow cytometry samples.
+\newblock PLOS Computational Biology 2013;\hspace{0pt}9:e1003130.
+
+\bibitem{ONeill2013}
+O'Neill K, Aghaeepour N, Špidlen J, and Brinkman R.
+\newblock Flow cytometry bioinformatics.
+\newblock PLOS Computational Biology 2013;\hspace{0pt}9:e1003365.
+
+\bibitem{Anchang2014}
+Anchang B, Do MT, Zhao X, and Plevritis SK.
+\newblock Ccast: A model-based gating strategy to isolate homogeneous
+  subpopulations in a heterogeneous population of single cells.
+\newblock PLOS Computational Biology 2014;\hspace{0pt}10:e1003664.
+
+\bibitem{Finak2014}
+Finak G, Frelinger J, Jiang W, Newell EW, Ramey J, Davis MM, Kalams SA, De~Rosa
+  SC, and Gottardo R.
+\newblock Opencyto: An open source infrastructure for scalable, robust,
+  reproducible, and automated, end-to-end flow cytometry data analysis.
+\newblock PLOS Computational Biology 2014;\hspace{0pt}10:e1003806.
+
+\bibitem{Saeys2016}
+Saeys Y, Gassen SV, and Lambrecht BN.
+\newblock Computational flow cytometry: helping to make sense of
+  high-dimensional immunology data.
+\newblock Nat Rev Immunol 2016;\hspace{0pt}16:449--462.
+
+\bibitem{Chen2016}
+Chen H, Lau MC, Wong MT, Newell EW, Poidinger M, and Chen J.
+\newblock Cytofkit: A bioconductor package for an integrated mass cytometry
+  data analysis pipeline.
+\newblock PLOS Computational Biology 2016;\hspace{0pt}12:e1005112.
+
+\bibitem{Mukhopadhyay2000}
+Mukhopadhyay N.
+\newblock \emph{Probability and Statistical Inference}.
+\newblock New York: CRC Press, 1 edition edition, 2000.
+
+\bibitem{Silverman1981}
+Silverman BW.
+\newblock Using kernel density estimates to investigate multimodality.
+\newblock Journal of the Royal Statistical Society Series B (Methodological)
+  1981;\hspace{0pt}43:97--99.
+
+\bibitem{Johnsson2017}
+Johnsson K, Linderoth M, and Fontes M.
+\newblock What is a “unimodal” cell population? using statistical tests as
+  criteria for unimodality in automated gating and quality control.
+\newblock Cytometry Part A 2017;\hspace{0pt}91:908--916.
+
+\bibitem{Hartigan1985}
+Hartigan JA and Hartigan PM.
+\newblock The dip test of unimodality.
+\newblock The Annals of Statistics 1985;\hspace{0pt}pages 70--84.
+
+\bibitem{FlowJo}
+FlowJo-LLC.
+\newblock Ver 9.9 for OSX,default settings.
+
+\bibitem{botev2010}
+Botev ZI, Grotowski JF, and Kroese DP.
+\newblock Kernel density estimation via diffusion.
+\newblock Ann Statist 2010;\hspace{0pt}38:2916--2957.
+
+\bibitem{Spencer2009}
+Spencer SL, Gaudet S, Albeck JG, Burke JM, and Sorger PK.
+\newblock Non-genetic origins of cell-to-cell variability in trail-induced
+  apoptosis.
+\newblock Nature 2009;\hspace{0pt}459:428--432.
+
+\bibitem{Koller2009}
+Koller D and Friedman N.
+\newblock \emph{Probabilistic Graphical Models: Principles and Techniques}.
+\newblock Cambridge, MA: The MIT Press, 2009.
+
+\bibitem{Ching2017}
+Ching ESC and Tam HC.
+\newblock Reconstructing links in directed networks from noisy dynamics.
+\newblock Phys Rev E 2017;\hspace{0pt}95:010301.
+
+\bibitem{Filippi2016}
+Filippi S, Barnes C, Kirk PW, Kudo T, Kunida K, McMahon S, Tsuchiya T, Wada T,
+  Kuroda S, and Stumpf MH.
+\newblock Robustness of mek-erk dynamics and origins of cell-to-cell
+  variability in mapk signaling.
+\newblock Cell Reports 2016;\hspace{0pt}15:2524--2535.
+
+\bibitem{NicPrice}
+Price N.
+\newblock Hartigan's dip test matlab implementation.
+
+\end{thebibliography}
