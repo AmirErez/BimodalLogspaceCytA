@@ -3,6 +3,7 @@
 
 \documentclass[11pt,a4paper,final]{article}
 \usepackage{setspace}
+\usepackage{hyperref}
 \doublespacing
 %\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
 
@@ -95,6 +96,9 @@ The rest of this paper is composed of two parts. In the first part, we point out
 \newpage
 
 \section*{Methods - theory}
+All data and MATLAB scripts used for the experimental part of this work, together with accompanying MIFlowCyt checklists detailing the data analysis, are freely available online. For details we refer the reader to the \emph{Supporting information}. The rest of this \emph{Methods} section deals with the theoretical part of this manuscript. 
+
+\smallskip
 Given the pdf $P(\log I)$, one can formally derive $Q(I)$ as \cite{Mukhopadhyay2000},
 \bea 
 \label{eq:P2Q}
@@ -244,6 +248,33 @@ The authors declare that there are no conflicts of interest.
 %
 %\paragraph*{S1 Fig}
 %\label{S1_Fig}
+
+\subsection*{Data and analysis}
+All data and analysis used for this manuscript has been made publicly available as follows:
+
+\smallskip
+\begin{itemize}
+\item All MATLAB scripts used to generate the plots and analyze the data in,
+\\
+{\small \href{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Scripts}{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Scripts}}
+\item Al data used in the manuscript and accompanying MIFlowCyt checklists, which comes from two datasets:
+	\begin{enumerate}
+	\item 20140920-OT1-dynamics - used for Fig. 3 in the manuscript.
+	\item FeinermanScience2008 - previously published in Feinerman et al. Science Vol. 321, Issue 5892, pp. 1081-1084 (2008). 
+	\end{enumerate}
+These data with their respective MIFlowCyt checklists are freely available in,
+
+\smallskip
+\noindent{\small
+\href{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Data/20140920-OT1-dynamics}{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Data}}
+
+\end{itemize} 
+
+\smallskip
+The main manuscript github page can be found in,
+
+\smallskip
+\href{https://github.com/AmirErez/BimodalLogspaceCytA}{https://github.com/AmirErez/BimodalLogspaceCytA}
 
 \subsection*{Finding the extrema of a log-normal mixture}
 It is possible to discern between one or three extrema of the distribution $P(\log I)$, corresponding to one or two modes (respectively) by counting the number of solutions for $\frac{d}{d\log I}P(\log I) = 0$. Similarly, $\frac{d}{dI}Q(I)=0$ can have either one or three solutions. This raises the possibility of there being three extrema (two modes) for $P(\log I)$ whereas only one mode in $Q(I)$. We explicitly evaluate the extrema of the mixture of log-normal distributions by solving,

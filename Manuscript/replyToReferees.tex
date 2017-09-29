@@ -1,5 +1,6 @@
 \documentclass[letter,11pt,draft]{article}
 \usepackage{color}
+\usepackage{hyperref}
 %\usepackage{hyphenat}
 %\usepackage{soul}
 %\linespread{1.0}
@@ -43,7 +44,7 @@ We thank the Referees for making many detailed and useful suggestions; we sincer
 Referee 1 found our example "illustrative and intuitive" for which "the proposed method clearly works well", whereas Referee 2 considered our work "worth bringing to the attention of the readership of Cytometry A" and that "the illustration seems particularly enlightening".
 
 \bigskip
-We have addressed all the Referee comments, point by point, below. A Referee comment appear in \re{blue italics}, followed by our reply in black. In addition, we have made the data and MATLAB code used for this manuscript freely available in REF HERE. We have also provided the MIFlowCyt details as supplements to this submission. We hope you will find our new submission much improved.
+We have addressed all the Referee comments, point by point, below. A Referee comment appear in \re{blue italics}, followed by our reply in black. In addition, we have made the data and MATLAB code used for this manuscript freely available (details below). We have also provided the MIFlowCyt details as supplements to this submission. We hope you will find our new submission much improved.
 
 %\closing{We look forward to your reply,}
 \bigskip
@@ -67,8 +68,31 @@ Associate Editor Comments:
 \\
 In addition to reviewers with respect to meeting scientific standards for reporting, it seems this work currently does not meet the MIFlowCyt requirements (not provided, as required by Cytometry A), especially as noted  with respect to data availability. Also missing are details of available implementations of their approach, per  Cytometry A software and data sharing requirements.}
 
+\smallskip
+Dear Associate Editor, we now make publicly available all data (including MIFlowCyt checklists) and analysis with the manuscript, organized as described below. We have added to the \emph{Supplemental information} the description below.
 
+\begin{itemize}
+\item All MATLAB scripts used to generate the plots and analyze the data in
+\\
+{\small \href{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Scripts}{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Scripts}}
+\item Al data used in the manuscript and accompanying MIFlowCyt checklists, which comes from two datasets:
+	\begin{enumerate}
+	\item 20140920-OT1-dynamics - used for Fig. 3 in the manuscript.
+	\item FeinermanScience2008 - previously published in Feinerman et al. Science Vol. 321, Issue 5892, pp. 1081-1084 (2008). 
+	\end{enumerate}
+These data with their respective MIFlowCyt checklists are freely available in
 
+\smallskip
+\noindent{\small
+\href{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Data/20140920-OT1-dynamics}{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Data}}
+
+\end{itemize} 
+
+\smallskip
+The main manuscript github page can be found in
+
+\smallskip
+\href{https://github.com/AmirErez/BimodalLogspaceCytA}{https://github.com/AmirErez/BimodalLogspaceCytA}
 \newpage
 
 \section*{Reply to Referee 1}
@@ -90,13 +114,14 @@ We have added a comment about the more advanced transformations in the discussio
 \re{3. The 'Methods' section needs considerable restructuring. Preferably the toy (or simulated) example is pushed to the first part of the results section, and the methods section contains the derivation and structure of proposed methods, a brief description of Hartigan's dip test and a description of the used datasets.}
 
 \smallskip
-We have made particular effort to separate out the theoretical (methods) from the experimental (results). We find that in manuscripts that combine both, it is best to emphasize the difference, so that there is no doubt which is which, even at a glance. Whereas the Referee's suggestion has merit, it is also a question of style and suffers from trade-offs such as a less clear separation between experimental and theoretical. As such, we describe the used datasets where they are used, in the "Results - experiments" section. Since the two examples are different, we do so in series, so as to maintain focus on the relevant dataset. Further, in accordance with MIFlowCyt, the experimental details are summarized in the MIFlowCyt supplements. We hope the Referee understands and accepts our choice of presentation.
+We have made particular effort to separate out the theoretical (methods) from the experimental (results). We find that in manuscripts that combine both, it is best to emphasize the difference, so that there is no doubt which is which, even at a glance. As such, we describe the used datasets where they are used, in the "Results - experiments" section. Further, in accordance with MIFlowCyt, the experimental details are summarized in the MIFlowCyt supplements and the data made freely available. We have added a comment to this effect at the beginning of the \emph{Methods} section and details of the data availability in the \emph{Supporting information}. We hope the Referee understands and accepts our choice of presentation.
 
 \re{4. There is no description of the data that is used in this study whatsoever. It is not clear whether the data from ref. [1] were reused or acquired in the same way as described in ref. [1]. Both datasets cannot be accessed. Details about the data are not present, which they should be. Preferably, they should also be made available, please consider Flowrepository to freely store your flow cytometry data (especially for ref. [1], as this data can only accessed upon request from correponding author, although they are published in an open-access journal).}
 
 \smallskip
-We have addressed this, providing description of the data in accordance with MIFlowCyt. We have made the data and scripts which create the figures publicly available. Please find the details in the Reply to Associate Editor.
+We have addressed this, providing description of the data in accordance with MIFlowCyt. We have made the data and scripts which create the figures publicly available. Please find the details above.
 
+\smallskip
 \re{5. The link to phase transitions needs more explanation or to be removed (line 53-54).}
 
 \smallskip
