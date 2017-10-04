@@ -119,7 +119,8 @@ We have made particular effort to separate out the theoretical (methods) from th
 \re{4. There is no description of the data that is used in this study whatsoever. It is not clear whether the data from ref. [1] were reused or acquired in the same way as described in ref. [1]. Both datasets cannot be accessed. Details about the data are not present, which they should be. Preferably, they should also be made available, please consider Flowrepository to freely store your flow cytometry data (especially for ref. [1], as this data can only accessed upon request from correponding author, although they are published in an open-access journal).}
 
 \smallskip
-We have addressed this, providing description of the data in accordance with MIFlowCyt. We have made the data and scripts which create the figures publicly available. Please find the details above.
+We have addressed this, providing description of the data in accordance with MIFlowCyt. We have made the data and scripts which create the figures publicly available. We provide details in the \emph{Reply to Associate Editor}. Briefly, all data, scripts, and MIFlowCyt details can be found in
+\href{https://github.com/AmirErez/BimodalLogspaceCytA}{https://github.com/AmirErez/BimodalLogspaceCytA}
 
 \smallskip
 \re{5. The link to phase transitions needs more explanation or to be removed (line 53-54).}
@@ -130,7 +131,8 @@ Removed.
 \re{6. The second method, how biological information can be used to properly estimate the mismatch between logarithmic and linear binning is in need of a proper presentation, as the idea seems an interesting one, but is not clearly laid out.}
 
 \smallskip
-To clarify this method, we have added a paragraph, which begins with "We briefly sketch what follows". The purpose of this section is how, by measuring additional, related biological information, one can ameliorate the mismatch between the two representations, resulting in more reliable gates. 
+To clarify this method, we have added a paragraph, which begins with "We briefly sketch what follows". (Last paragraph in page 12).
+The purpose of this section is how, by considering both ERK1 and ppERK levels, one can ameliorate the mismatch between the two representations, resulting in more reliable gates. 
 
 \re{7. A recent publication in Cytometry A by Johnsson et al. (2017) show that dip and bandwidth tests perform statistically consistent for unimodality, so it would be preferable to make a comment about that and to incorporate some of the literature in this manuscript. In addition, they propose that for the dip test you should have at least 10,000 cells while results in the manuscript suggest to have at least 100,000 cells. They analyzed the FlowCAP1-dataset, which might be a good addition to this work, as it is well known in the cytometry community.}
 \\ 
@@ -172,7 +174,7 @@ Minor comments:
 11. There are quite a number of spelling mistakes and grammatical errors in the manuscript.}
 
 \smallskip
-We are afraid that neither we nor the spell-checker in our software have found any obvious spelling mistakes. We have done our best to use correct grammar. We encourage the Referee to specifically point at mistakes they would like addressed.
+We thank the editor for catching these mistakes, and hope that these errors did not obscure his or her first reading of the manuscript. We have taken great care in revising this version and are happy to work with the editor and / or representatives from Cytometry A to correct any remaining errors.
 
 \re{
 12. Please adhere to the journal's format of abbreviations, such as flow cytometry (FCM).}
@@ -226,7 +228,7 @@ We thank the Referee for considering our work \re{"worth bringing to the attenti
 \re{What is labeled as Q(I) and called a distribution in the present paper is instead a probability density function (pdf). Let us say there is a single continuous random variable, I, the intensity of a fluorescence then the pdf would usually labeled $f_I(x)$, with associated cumulative distribution function (cdf) being $F_I(x) = int_{-\infty}^x f_I(y) dy$. What is called P(log I) would then the pdf of the random variable log(I), which would normally be written as $f_{log(I)}(x)$.}
 
 \smallskip
-We thank the Referee for the suggestion regarding precise notation of the pdfs in the manuscript, and that the Referee acknowledges that such a change of notation is a time consuming and personal choice. Certainly, for some of the readership of Cytometry A the suggested change of notation $Q(I)\rightarrow f_I(x)$ and $P(\log I)\rightarrow f_{\log I}(x)$ would improve readability. We fear, however, that a possibly comparable proportion of the readers might mistake $f_I$ and $f_{\log I}$ for having the same \emph{functional form}, just of a different argument, which is manifestly not the case in our example. Indeed, that is precisely the reason we chose $P$ and $Q$ to make this distinction explicit to the reader with a less formal mathematical background. More so, $P$, instead of $Q$, was granted to $f_{\log I}$ on merit that the reader is most likely acquainted with a logarithmic representation of the data, and is more habituated to a pdf denoted $P$. This choice of $P$ for the pdf of $\log I$ is consistent with Cytometry A's list of accepted abbreviations which chooses $P$ for probability.  
+We thank the Referee for the suggestion regarding precise notation of the pdfs in the manuscript, and that the Referee acknowledges that such a change of notation is a time consuming. Certainly, for some of the readership of Cytometry A the suggested change of notation $Q(I)\rightarrow f_I(x)$ and $P(\log I)\rightarrow f_{\log I}(x)$ would improve readability. We fear, however, that a possibly comparable proportion of the readers might mistake $f_I$ and $f_{\log I}$ for having the same \emph{functional form}, just of a different argument, which is manifestly not the case in our example. Indeed, that is precisely the reason we chose $P$ and $Q$ to make this distinction explicit to the reader with a less formal mathematical background. More so, $P$, instead of $Q$, was granted to $f_{\log I}$ on merit that the reader is most likely acquainted with a logarithmic representation of the data, and is more habituated to a pdf denoted $P$. This choice of $P$ for the pdf of $\log I$ is consistent with Cytometry A's list of accepted abbreviations which chooses $P$ for probability.  
 
 \smallskip
 We hope the Referee understands and accepts the thought process which led to our choice of notation.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 SEP 2017 20:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 OCT 2017 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -233,7 +233,7 @@ Missing character: There is no ‚ in font cmti10!
 Missing character: There is no Ä in font cmti10!
 Missing character: There is no ù in font cmti10!
 
-Overfull \hbox (13.36209pt too wide) in paragraph at lines 140--141
+Overfull \hbox (13.36209pt too wide) in paragraph at lines 142--143
 []\OT1/cmr/m/n/10.95 We thank the Ref-eree for point-ing out this in-ter-est-in
 g and re-cent manuscript|
  []
@@ -246,25 +246,25 @@ Missing character: There is no ‚ in font cmti10!
 Missing character: There is no Ä in font cmti10!
 Missing character: There is no ù in font cmti10!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 157.
+(Font)              <10.95> on input line 159.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 157.
+(Font)              <8> on input line 159.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 157.
+(Font)              <6> on input line 159.
 
-Overfull \hbox (105.74902pt too wide) in paragraph at lines 163--164
+Overfull \hbox (105.74902pt too wide) in paragraph at lines 165--166
 \OT1/cmr/m/it/10.95 A: http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)155
 2-4930/homepage/ForAuthors.html.|
  []
 
 [5] [6] [7] [8] [9] [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 329.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 331.
  [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 329.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 331.
  (./replyToReferees.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 329.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 329.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 329.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 331.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 331.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 331.
  ) 
 Here is how much of TeX's memory you used:
  4842 strings out of 493014
@@ -273,7 +273,7 @@ Here is how much of TeX's memory you used:
  8391 multiletter control sequences out of 15000+600000
  7330 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,6n,21p,1147b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,6n,21p,1127b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -282,7 +282,7 @@ r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/l
 ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on replyToReferees.pdf (11 pages, 128348 bytes).
+Output written on replyToReferees.pdf (11 pages, 128535 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  50 compressed objects within 1 object stream
