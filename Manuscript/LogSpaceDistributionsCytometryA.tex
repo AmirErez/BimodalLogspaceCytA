@@ -121,7 +121,7 @@ In Fig.~\ref{fig:PlotsLinearLog}, to illustrate with typical measurement values,
 
 \begin{figure}[!ht]
  \centering
-  \includegraphics[clip,width=1\hsize]{Fig1.tiff}
+  \includegraphics[clip,width=1\hsize]{Fig1.tif}
   \caption{\textbf{Log-normal mixture showing the mismatch in the number of peaks.} \textbf{Top row, red:} $P(\log I)$ vs. $\log I$ normalized to max. \textbf{Middle row, magenta:} $Q(I)$ vs. $I$ normalized to max, and plotted on a narrower range. \textbf{Bottom row, blue:} $Q(I)$ vs. $\log I$ normalized to max, rescaling the x-axis as in Ref.~\cite{Novo2008}. In the central column where $\sigma_1=\sigma_2=0.8$, $P(\log I)$ shows explicit bimodality whereas $Q(I)$ is unimodal. \textbf{Right column:} in this case, the variance $\sigma^2$ is large enough (see Eq.~\ref{eq:Plogy3Maxima}) that $P(\log I)$ has only one mode even though it is modeled as a mixture. In all cases: $I_1=100,\,I_2=1000,\,\alpha=0.5$ varying $\sigma_{1,2}=\{0.4,0.8,1.2\}$ (left to right columns, respectively). Leftmost column shows axes. }
   \label{fig:PlotsLinearLog}
 \end{figure}
@@ -145,7 +145,7 @@ In Fig.~\ref{fig:ExtremaSolutions}, we present an example of this graphical meth
 
 \begin{figure}[!ht]
  \centering
-  \includegraphics[clip,width=1\hsize]{Fig2.tiff}
+  \includegraphics[clip,width=1\hsize]{Fig2.tif}
   \caption{\textbf{Graphical solution to count the number of extrema.} When the red (blue) curves intersect the dashed black line, $P(\log I)$ ($Q(I)$) are extremized. Dashed black: $A(y)$, blue: $B_1(y)$ and red: $B_3(y)$. The mismatch between the number of extrema of $P(\log I)$ and $Q(I)$ is apparent when the red curve intersects $A$ at 3 points, whereas the blue curve only intersects $A$ once. In both cases, the loci of the extrema are different for the two distributions. The plots along the diagonal (which correspond to the cases in Fig.~\ref{fig:PlotsLinearLog}) show the case $\sigma_1=\sigma_2$ which simplifies $A(y)$ to a straight line (the general case being a parabola) in these axes.}
   \label{fig:ExtremaSolutions}
 \end{figure}
@@ -171,7 +171,7 @@ We now apply our analysis to experimental data, namely the measured distribution
 
 \begin{figure}[!ht]
  \centering
-  \includegraphics[width=1\linewidth]{Fig3.tiff}
+  \includegraphics[width=1\linewidth]{Fig3.tif}
   \caption{\textbf{Analysis of experimental data reveals the effect we describe in a real scenario. }\textbf{(A)} Histogram of ppERK as plotted by FlowJo \cite{FlowJo}; \textbf{(B)} Histograms for $P(\log I)$ (red,dots) and $Q(I)$ (blue,dots) vs. $\log I$ as estimated from the data binned logarithmically. Note that plotting $Q(I)$ vs. $\log I$ is somewhat unusual but allows both $P$ and $Q$ to be plotted on the same axis. The red line shows the result of fitting $P(\log I)$ to a gaussian mixture model (Eq.~\ref{eq:LogNormalMix}), and the blue line is the estimate for $Q(I)$ from $P(\log I)$ according to Eq.~\ref{eq:P2Q}. The blue star indicates the location of the only maximum for $Q(I)$ obtained from Eq. \ref{eq:extremaQ}, despite the obvious two maxima in $P(\log I)$ (red). Hartigan's unimodality p-values for $\log I$ (red) and $I$ (blue) are taken directly from the data without binning, corroborating that $\log I$ is bimodal whereas $I$ is unimodal. \textbf{(C)} Graphic solution of the extrema conditions as in Fig.~\ref{fig:ExtremaSolutions} explicitly reveals the three solutions for $P(\log I_*)$ (red line intersects black dashed) as opposed to the single solution for $Q(I_*)$ (the blue line intersects the black dashed line up beyond the plotted area, solution also plotted as blue star in the middle plot), indicating that $Q(I)$ has only one mode.}
   \label{fig:Experiment}
 \end{figure}
@@ -204,7 +204,7 @@ Thus we demonstrate how by suitably accounting for cell-to-cell variability one 
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\linewidth]{Fig4.tiff}
+    \includegraphics[width=1\linewidth]{Fig4.tif}
    \caption{\textbf{Analysis of experimental data with two correlated measurements.} \textbf{(A)} The joint distribution $P_2(\log I_{ppERK},\log I_{ERK1})$ as a heat map with its marginals plotted on the top and on its right. The correlation between ppERK and ERK1 levels is clear in the data. Dashed red (grey) lines are proposed manual gates according to the marginal (joint) distributions $P(\log I_{ppERK})$ $\left(P_2(\log I_{ppERK},\log I_{ERK1})\right)$. \textbf{(B)} Bayesian network depicted as a graphical model to show the flow of influence on the measurement of ppERK. The pair ERK1 and ppERK are in a template to suggest that there exist other pairs of correlated observables that depend on activation status and cell-to-cell variability.}
    \label{fig:ppERKvsERK1heatmap}
 \end{figure}
@@ -214,7 +214,7 @@ Thus we demonstrate how by suitably accounting for cell-to-cell variability one 
 \smallskip
 \begin{figure}
  \centering
-   \includegraphics[width=1\linewidth]{Fig5.tiff}  
+   \includegraphics[width=1\linewidth]{Fig5.tif}  
   \caption{\textbf{By dividing ppERK readings by ERK1, we can ameliorate the mismatch between the two representations.} \textbf{(A)} $P(\log I_{ppERK})$ and $Q(I_{ppERK})$ vs. $\log I_{ppERK}$ (dots: data, lines: Gaussian mixture fit) together with \textbf{(B)} their extrema analysis, showing that the second mode in log ppERK does not exist if the data is linearly binned. \textbf{(C)} The same treatment but for $\tilde{I} = I_{ppERK}/I_{ERK1}$, \textbf{(D)} shows that both $\tilde{I}$ and $\log \tilde{I}$ have two modes, thus normalizing ppERK levels by total ERK1 maintains the bimodal structure both in $P(\log \tilde{I})$ and in $Q(\tilde{I})$. }
   \label{fig:NormppERKbyERK}
 \end{figure}
@@ -321,7 +321,7 @@ As a check for the predictive power of Hartigan's test with regards to experimen
 
 \begin{figure}[!ht]
  \centering
- \includegraphics[clip,width=1\hsize]{Fig6.tiff}
+ \includegraphics[clip,width=1\hsize]{Fig6.tif}
   \caption{\textbf{Testing Hartigan's p-value $p_u$ for unimodality on a weakly bimodal log-normal mixture.} The heat-map shows $p_u$ as a function of the number of bootstrap tests and number of events in each test, for $\sigma_1=0.4$ and $\sigma_2=0.8$ as in Fig.~\ref{fig:ExtremaSolutions}(top,middle). With less than $\sim10^5$ events, Hartigan's test for this case may misidentify the number of peaks.}
   \label{fig:CheckHartigan}
 \end{figure}
@@ -329,7 +329,7 @@ As a check for the predictive power of Hartigan's test with regards to experimen
 \subsection*{Relation between ERK1 level and activation status}
 \begin{figure}[!htb]
  \centering
-   \includegraphics[width=1\linewidth]{Fig7.tiff}  
+   \includegraphics[width=1\linewidth]{Fig7.tif}  
   \caption{{\bf Test for weak dependence of ERK1 and activation status.} Whereas independence implies that $P(\log ERK1) = P(\log ERK1 \vert Activation)$, in fact there is a weak dependence between them regardless of whether we employ a vertical (red, defined by threshold value $ppERK_*$) or a diagonal (grey) gate (the diagonal gate showing a weaker dependence); this is observed directly by noting that the different distributions in Fig.~\ref{S1_Fig} do not lie on top of each other. To quantify this difference, the inset shows the mutual information between $P(\log ERK1)$ and $P(\log ERK1 | Activation)$, with the circle pointing out the particular concentration of stimulus (out of all concentrations used in Ref.~\cite{Feinerman2008}) we chose to plot in this example. The chosen concentration has the highest mutual information, {\it i.e.}, the lowest ability to discern between the active and inactive states.}
   %\caption{\textbf{By dividing ppERK readings by ERK1, we can ameliorate the mismatch between the two representations.} \textbf{(A)} $P(\log I)$ and $Q(I)$ vs. $\log I$ (dots: data, lines: gaussian mixture fit) together with \textbf{(B)} their extrema analysis, showing that the second mode in log ppERK does not exist if the data is linearly binned. \textbf{(C)} The same treatment but for $\tilde{I} = I_{ppERK}/I_{ERK1}$, \textbf{(D)} shows that both $\tilde{I}$ and $\log \tilde{I}$ have two modes, thus normalizing ppERK levels by total ERK1 maintains the bimodal structure both in $P(\log \tilde{I})$ and in $Q(\tilde{I})$. }
   \label{S1_Fig}
