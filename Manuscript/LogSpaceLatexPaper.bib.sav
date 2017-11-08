@@ -948,7 +948,7 @@ It has long been thought that clonal deletion efficiently removes almost all sel
 
 @Misc{FlowJo,
   author       = {FlowJo-LLC},
-  howpublished = {Ver 9.9 for OSX,default settings},
+  howpublished = {Ver 9.9 for OSX,default settings Biexponential transform with Width:-20; Pos Decades: 4.5 ; Addl Negative 0},
   url          = {https://flowjo.com},
 }
 

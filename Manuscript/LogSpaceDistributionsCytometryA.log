@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 OCT 2017 22:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  8 NOV 2017 09:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -98,7 +98,7 @@ File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Option `draft' set `true' on input line 4322.
+Package hyperref Info: Option `final' set `true' on input line 4322.
 Package hyperref Info: Hyper figures OFF on input line 4446.
 Package hyperref Info: Link nesting OFF on input line 4451.
 Package hyperref Info: Hyper index ON on input line 4454.
@@ -208,11 +208,8 @@ LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 \AtBeginShipoutBox=\box26
-
-
-Package hyperref Warning: Draft mode on.
-
 Package hyperref Info: Link coloring OFF on input line 23.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -224,9 +221,13 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
 LaTeX Info: Redefining \nameref on input line 23.
+
+(./LogSpaceDistributionsCytometryA.out) (./LogSpaceDistributionsCytometryA.out)
+\@outlinefile=\write3
+\openout3 = `LogSpaceDistributionsCytometryA.out'.
+
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count101
@@ -265,11 +266,57 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4] [5] [6] [7] <Fig1.png, id=39, 375.804pt x 216.81pt> [8]
-<Fig2.png, id=44, 375.804pt x 252.945pt> [9] [10] [11]
-<Fig3.png, id=54, 375.804pt x 122.859pt> [12] [13] [14] [15]
-<Fig4.png, id=69, 374.3586pt x 401.0985pt>
-<Fig5.png, id=70, 375.804pt x 289.08pt> [16] [17] [18] [19]
+[2] [3] [4] [5] [6] [7] <Fig1.png, id=113, 375.804pt x 216.81pt>
+File: Fig1.png Graphic file (type png)
+
+<use Fig1.png>
+Package pdftex.def Info: Fig1.png used on input line 126.
+(pdftex.def)             Requested size: 360.0pt x 207.70184pt.
+ [8 <./Fig1.png (PNG copy)>]
+<Fig2.png, id=133, 375.804pt x 252.945pt>
+File: Fig2.png Graphic file (type png)
+ <use Fig2.png>
+Package pdftex.def Info: Fig2.png used on input line 150.
+(pdftex.def)             Requested size: 360.0pt x 242.31883pt.
+ [9] [10 <./Fig2.png (PNG copy)>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 172.
+
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 172.
+
+[11]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no ± in font cmr10!
+Missing character: There is no Œ in font cmr10!
+Missing character: There is no º in font cmr10!
+ [12] [13] <Fig3.png, id=182, 375.804pt x 122.859pt>
+File: Fig3.png Graphic file (type png)
+ <use Fig3.png>
+Package pdftex.def Info: Fig3.png used on input line 197.
+(pdftex.def)             Requested size: 360.0pt x 117.6977pt.
+
+[14] [15 <./Fig3.png>] [16] [17] <Fig4.png, id=235, 374.3586pt x 401.0985pt>
+File: Fig4.png Graphic file (type png)
+
+<use Fig4.png>
+Package pdftex.def Info: Fig4.png used on input line 236.
+(pdftex.def)             Requested size: 360.0pt x 385.7234pt.
+ <Fig5.png, id=236, 375.804pt x 289.08pt>
+File: Fig5.png Graphic file (type png)
+ <use Fig5.png>
+Package pdftex.def Info: Fig5.png used on input line 246.
+(pdftex.def)             Requested size: 360.0pt x 276.93579pt.
+ [18]
+[19 <./Fig4.png>] [20 <./Fig5.png (PNG copy)>] [21]
 (./LogSpaceDistributionsCytometryA.bbl
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
@@ -277,48 +324,54 @@ Missing character: There is no ú in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
- [20]
+ [22]
 Missing character: There is no √ in font cmr10!
 Missing character: There is no ± in font cmr10!
- [21]
+ [23] [24]
 Missing character: There is no ≈ in font cmr10!
 Missing character: There is no † in font cmr10!
- [22]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
- [23]) [24]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 257.
+ [25]) [26] [27pdfTeX warning (ext4): destination with the same identifier (nam
+e{equation.0.6}) has been already used, duplicate ignored
 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.321 
+      ] <Fig6.png, id=303, 375.804pt x 180.675pt>
+File: Fig6.png Graphic file (type png)
+ <use Fig6.png>
+Package pdftex.def Info: Fig6.png used on input line 326.
+(pdftex.def)             Requested size: 360.0pt x 173.08485pt.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 257.
- [25] [26]
-<Fig6.png, id=106, 375.804pt x 180.675pt>
-<Fig7.png, id=107, 375.804pt x 252.945pt>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 339.
- [27] [28]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 339.
-
-(./LogSpaceDistributionsCytometryA.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 339.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 339.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 339.
+<Fig7.png, id=306, 375.804pt x 252.945pt>
+File: Fig7.png Graphic file (type png)
+ <use Fig7.png>
+Package pdftex.def Info: Fig7.png used on input line 334.
+(pdftex.def)             Requested size: 360.0pt x 242.31883pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 341.
+ [28] [29 <./Fig6.png (PNG copy)>] [30 <./Fig7.png (PNG copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 341.
+ (./LogSpaceDistributionsCytometryA.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 341.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 341.
+Package rerunfilecheck Info: File `LogSpaceDistributionsCytometryA.out' has not
+ changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 341.
  ) 
 Here is how much of TeX's memory you used:
- 6599 strings out of 493014
- 101518 string characters out of 6133351
- 193438 words of memory out of 5000000
- 10111 multiletter control sequences out of 15000+600000
- 8719 words of font info for 31 fonts, out of 8000000 for 9000
+ 6707 strings out of 493014
+ 102842 string characters out of 6133351
+ 197651 words of memory out of 5000000
+ 10118 multiletter control sequences out of 15000+600000
+ 8551 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,43p,1996b,537s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,11n,46p,2844b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -332,13 +385,12 @@ exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
 ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on LogSpaceDistributionsCytometryA.pdf (28 pages, 225891 bytes).
-
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on LogSpaceDistributionsCytometryA.pdf (30 pages, 1599647 bytes)
+.
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 392 PDF objects out of 1000 (max. 8388607)
+ 330 compressed objects within 4 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 54 words of extra memory for PDF output out of 10000 (max. 10000000)
 

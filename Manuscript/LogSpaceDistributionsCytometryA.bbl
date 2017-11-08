@@ -163,7 +163,8 @@ Hartigan JA and Hartigan PM.
 
 \bibitem{FlowJo}
 FlowJo-LLC.
-\newblock Ver 9.9 for OSX,default settings.
+\newblock Ver 9.9 for OSX,default settings, ie. : Biexponential transform such
+  that Width:-20; Pos Decades: 4.5 ; Addl Negative 0.
 
 \bibitem{botev2010}
 Botev ZI, Grotowski JF, and Kroese DP.
