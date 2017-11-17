@@ -3,7 +3,8 @@
 
 \documentclass[11pt,a4paper,draft]{article}
 \usepackage{setspace}
-\usepackage{hyperref}
+%\usepackage{hyperref}
+%\usepackage[T1]{fontenc}
 \doublespacing
 %\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
 
@@ -21,10 +22,10 @@
 \renewcommand{\figurename}{Fig}
 
 \begin{document}
-\def\be{\begin{equation}}
-\def\ee{\end{equation}}
-\def\bea{\begin{eqnarray}}
-\def\eea{\end{eqnarray}}
+%\def\be{\begin{equation}}
+%\def\ee{\end{equation}}
+%\def\bea{\begin{eqnarray}}
+%\def\eea{\end{eqnarray}}
 \def\nl{\\ \noindent}
 \def\nn{\\ \nonumber}
 \def\etal{\emph{et al.} }
@@ -104,19 +105,19 @@ In this \emph{Methods} section we present, in two detailed sections, the theoret
 
 \smallskip
 Given the pdf $P(\log I)$, one can formally derive $Q(I)$ as \cite{Mukhopadhyay2000},
-\bea 
+\begin{eqnarray} 
 \label{eq:P2Q}
 Q(I) &=& P(\log I) \left\vert \frac{d}{dI} \log I \right\vert \nn
  &=& \frac{1}{I}P(\log I) = e^{-y} P(y)\,,
-\eea
+\end{eqnarray}
 with $\log I\equiv y$. This relation serves us both in this theoretical section and in the experimental \emph{Results} section, where we estimate the empirical distribution for $Q(I)$ using this relation. We now address the question: when is $Q(I)$ unimodal while $P({\log I})$ is multimodal ?
-\smallskip
 
-Cytometry data is often amenable to modeling as a log-normal mixture ({\it e.g.} \cite{Vogel2016}). To demonstrate the log/linear mismatch we consider a mixture of two populations, characterized by the distribution of intensity. We define $P(\log I)$ as follows:
-\be
-\label{eq:LogNormalMix}
+\smallskip
+Cytometry data is often amenable to modeling as a log-normal mixture (e.g., \cite{Vogel2016}). To demonstrate the log/linear mismatch we consider a mixture of two populations, characterized by the distribution of intensity. We define $P(\log I)$ as follows:
+\begin{equation}
 P(\log I) = \frac{(1-\alpha)}{\sqrt{2\pi\sigma_1^2}}e^{-\frac{(\log I - y_1)^2}{2\sigma_1^2}} + \frac{\alpha}{\sqrt{2\pi\sigma_2^2}}e^{-\frac{(\log I - y_2)^2}{2\sigma_2^2}},
-\ee
+\label{eq:LogNormalMix}
+\end{equation}
 with $y_{1,2}=\log I_{1,2}$ which are the loci of the centers of the left and right Gaussians in log-space, respectively, and $\sigma_{1,2}$ the log-space standard deviations. We then define $Q(I)=\frac{1}{I}P(\log I)$ as in Eq.~\ref{eq:P2Q}. 
 \smallskip
 
@@ -134,12 +135,12 @@ Determining whether empirical data is multimodal is a difficult task (eg., \cite
 \smallskip
 
 We define $y=\log I$ and proceed to find the number of extrema for $P(y)$ and $Q(I)$. We do this by simple differentiation, demanding that the derivatives of $P$ and $Q$ equal zero as a definition of extrema. This is achieved by recasting Eq.~\ref{eq:LogNormalMix} and its derivatives into the functions $A(y),B_1(y),B_3(y)$, defined as,
-\bea 
+\begin{eqnarray} 
 \label{eq:extrema}
 A(y) &=& \left(\frac{\alpha}{1-\alpha}\right)\left(\frac{\sigma_1}{\sigma_2}\right) e^{\frac{(y-y_1)^2}{2 \sigma_1^2}-\frac{(y-y_2)^2}{2 \sigma_2^2}}  \nn
 B_1(y) &=& \frac{\frac{y-y_1}{\sigma_1^2}+1}{\frac{y_2-y}{\sigma_2^2}-1} \nn
 B_3(y) &=& \frac{(y-y_1)/\sigma_1^2}{(y_2-y)/\sigma_2^2}\,.
-\eea
+\end{eqnarray}
 The outcome of this approach is that, to find the extrema of $Q(I)$, one must find the solutions $y_{*q}$ for $B_1(y_{*q})=A(y_{*q})$. Similarly, for the extrema of $P(\log I)$ one must solve $B_3(y_{*p})=A(y_{*p})$. Full mathematical details on how these are derived can be found in the \emph{Supporting information}. 
 
 \smallskip
@@ -155,15 +156,17 @@ In Fig.~\ref{fig:ExtremaSolutions}, we present an example of this graphical meth
 \end{figure}
 
 In the plots along the diagonal, we have $\sigma_1=\sigma_2$ (as in Fig.~\ref{fig:PlotsLinearLog})  which simplifies $A(y)$ since the quadratic (Gaussian) terms cancel, leaving only an exponential. This leads to a simple criterion to determine whether $P(\log I)$ itself admits one or two modes - previously in Fig.~\ref{fig:PlotsLinearLog}(right) we saw an example where $P(\log I)$ is unimodal despite being generated from a mixture. Graphically, we see that for $B_3=A$ to have 3 solutions, $\log B_3(y)$ has to have a slope less than $\log A(y)$ about the extremum $y_{*p}$. In other words, $\left.\frac{d}{dy} \log B_3(y)\right\vert_{y_{*p}} \le \left.\frac{d}{dy} \log A(y)\right\vert_{y_{*p}}$, with equality as the threshold between 1 and 3 extrema. This leads to the following intuitive criterion,
-\be 
-\label{eq:Plogy3Maxima}
+\begin{equation} 
 (y_{*p} - y_1)(y_2 - y_{*p}) \ge \sigma ^2 \,\,\Longrightarrow \,\, \mbox{3 extrema for } P(\log I)\,,
-\ee
+\label{eq:Plogy3Maxima}
+\end{equation}
 which states that for $P(\log I)$ to appear bimodal, it must have an extremum ($y_{*p}$) such that the variance of the individual Gaussian components of $P(\log I)$ must be smaller than the distance between $y_{*p}$ and the Gaussian centers. Substituting for $y_{*p} \approx \log 316$, $y_1 = \log 100$ and $y_2=\log 1000$ and $\sigma^2 = 1.44$ we see that the criterion in Eq.~\ref{eq:Plogy3Maxima} is not satisfied and indeed in Fig.~\ref{fig:PlotsLinearLog}(right) and Fig.~\ref{fig:ExtremaSolutions}(bottom right) we see that $P(\log I)$ has only one mode. A similar condition can be derived for $Q(I)$, that is, $\left.\frac{d}{dy} \log B_1(y)\right\vert_{y_{*q}} \le \left.\frac{d}{dy} \log A(y)\right\vert_{y_{*q}}$, such that,
-\be 
-\label{eq:QI3Maxima}
+\begin{equation} 
 (y_{*q} - y_1+\sigma^2)(y_2 - y_{*q} - \sigma^2) \ge \sigma ^2\,\,\Longrightarrow \,\,\mbox{3 extrema for } Q(I)\,,
-\ee \smallskip
+\label{eq:QI3Maxima}
+\end{equation} 
+
+\smallskip
 it is, however, hard to compare the two bounds analytically because the $y_{*p}$ which extremizes $P(\log I)$ is different from the $y_{*q}$ which extremizes $Q(I)$.
 
 \subsection*{Experimental methods}
@@ -171,20 +174,22 @@ All data and MATLAB scripts used for the experimental part of this work, togethe
 
 \smallskip
 \begin{itemize}
-\item All MATLAB scripts used to generate the plots and analyze the data in {\small \href{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Scripts}{github.com/AmirErez/BimodalLogspaceCytA/tree/master/Scripts}}
+\item All MATLAB scripts used to generate the plots and analyze the data in 
+github.com/AmirErez/BimodalLogspaceCytA/tree/master/Scripts 
 \item Al data used in the manuscript and accompanying MIFlowCyt checklists come from two experiments:
 	\begin{enumerate}
 	\item 20140920-OT1-dynamics - used for Fig. 3 in the manuscript.
 	\item FeinermanScience2008 - previously published in Feinerman et al. Science Vol. 321, Issue 5892, pp. 1081-1084 (2008). 
 	\end{enumerate}
-These data with their respective MIFlowCyt checklists are available in {\small
-\href{https://github.com/AmirErez/BimodalLogspaceCytA/tree/master/Data}{github.com/AmirErez/BimodalLogspaceCytA/tree/master/Data}}
+These data with their respective MIFlowCyt checklists are available in 
+github.com/AmirErez/BimodalLogspaceCytA/tree/master/Data 
 \end{itemize} 
-All are accessible in {\small\href{https://github.com/AmirErez/BimodalLogspaceCytA}{github.com/AmirErez/BimodalLogspaceCytA}}.
+All are accessible in 
+https://github.com/AmirErez/BimodalLogspaceCytA
 We briefly sketch the methods for each of the two experiments:
-\subsubsection*{Experiment 1:} Primary mouse T lymphocytes (OT-1) were activated ex vivo and cultured. OT-1 cells were activated by peptide (SIINFEKL) treated and irradiated (3,000 RAD) primary antigen presenting cells (APCs) from a C57BL/6 mouse. OT-1 cells were labeled with an amine-reactive dye, CTV, according to the manufacture’s protocol (Molecular Probes) for in silico identification. Cells were allowed to rest for one hour after CTV staining, and then distributed in a 96-well v-bottom plate. Cells were then incubated with unique doses of SRC inhibitor Dasatinib at a temperature of $37^o$C for 5 minutes. After which,  we added the peptide pulsed APCs (10 APCs to 1 OT-1 T cell) and pelleted mixture of cells by centrifugation for 10 s at 460 rcf at room temperature.  The pellet was then incubated at a temperature of $37^o$C for 10 minutes, followed by 15 minutes of chemical fixing with 2\% PFA on ice and then permeabilization with ice cold 90\% MeOH. Samples were kept at a temperature of $-20^o$C until labeling for FCM.
+\subsubsection*{Experiment 1:} Primary mouse T lymphocytes (OT-1) were activated ex vivo and cultured. OT-1 cells were activated by peptide (SIINFEKL) treated and irradiated (3,000 RAD) primary antigen presenting cells (APCs) from a C57BL/6 mouse. OT-1 cells were labeled with an amine-reactive dye, CTV, according to the manufacture’s protocol (Molecular Probes) for in silico identification. Cells were allowed to rest for one hour after CTV staining, and then distributed in a 96-well v-bottom plate. Cells were then incubated with unique doses of SRC inhibitor Dasatinib at a temperature of 37C for 5 minutes. After which,  we added the peptide pulsed APCs (10 APCs to 1 OT-1 T cell) and pelleted mixture of cells by centrifugation for 10 s at 460 rcf at room temperature.  The pellet was then incubated at a temperature of 37C for 10 minutes, followed by 15 minutes of chemical fixing with 2\% PFA on ice and then permeabilization with ice cold 90\% MeOH. Samples were kept at a temperature of -20C until labeling for FCM.
 
-\subsubsection*{Experiment 2:} C57BL/6N splenocytes were pulsed for 2hr with 100nM SIINFEKL peptide, then irradiated (3000RAD), washed once and used as stimulator/feeder cells. OT-1 lymphocytes were harvested from auxiliary, brachial and inguinal lymph nodes as well as spleen (splenocytes were treated with ACK lysis buffer to remove red blood cells), and mixed with SIINFEKL-pulsed C57BL/6N splenocytes in complete RPMI. After two days, cells were expanded by diluting 2 fold into medium containing 100 pM IL-2. After four days, the cells were again expanded by 2 fold dilution into medium with IL-2. After one more day of culture, cells were harvested and spun through a 1.09 density Ficoll- Paque Plus gradient (GE Healthcare) to remove dead cells. Live cells were recovered, washed twice in complete medium and resuspended at 1 million/ml in complete medium with 100pM IL-2. Cells were used for experiments between 6 and 8 days after primary stimulation. The ppERK response to SRC and MEK inhibition was measured using primary OT-1 T-lymphocytes activated with RMA-S APCs. RMA-S cells were suspended in culture with 1 nM SIINFEKL peptide for 2 h at 37 $^o$C, 5\% CO\textsubscript{2}, and on a rotator to guarantee mixing. During this time we labelled OT-1 cells with an amine-reactive dye, CTV, according to the manufacture’s protocol (Molecular Probes). We rested the OT-1 cells one hour after CTV staining, and then distributed them in a 96-well v-bottom plate. Each well was given various doses of SRC inhibitor and MEK inhibitor and kept at 37 $^o$C for 5 min. Following the 5 min exposure to the inhibitors, we added the peptide pulsed RMA-S (10 RMA-S to 1 OT-1 T cell) and pelleted by centrifugation for 10 s at 460 rcf at room temperature. This step guaranteed that both cell types, OT-1 and RMA-S, came into contact. The cells were allowed to activate for 10 min, followed by fixing on ice in 2\% PFA, and then permeabilized and stored in 90\% MeOH at  -20 $^o$C. APCs were pulsed with serial dilutions of OVA or variant peptides for 2 hr at 37$^o$C, then washed with T cell medium at the time of harvest, and resuspended with anti-CD8α (53-6.72)-Fab-coated T cells in their conditioned media in a V-bottom 96-well plate (Corning). Fab-coating was performed 10 min before cell use by incubating T cells with 10 μg/ml of Fab fragment. T:APC cell contacts were synchronized using a quick centrifugal spin (10s at 400g). Plates containing T:APC conjugates were placed on a water bath at 37$^o$C and incubated for 5 min. Supernatants were then discarded, T:APC conjugates disrupted by vortexing, and cells resuspended in ice-cold 4\% paraformaldehyde for 15 min. Cells were then permeabilized with ice-cold 90\% methanol for 15 min on ice, and washed twice with FACS buffer. 
+\subsubsection*{Experiment 2:} C57BL/6N splenocytes were pulsed for 2hr with 100nM SIINFEKL peptide, then irradiated (3000RAD), washed once and used as stimulator/feeder cells. OT-1 lymphocytes were harvested from auxiliary, brachial and inguinal lymph nodes as well as spleen (splenocytes were treated with ACK lysis buffer to remove red blood cells), and mixed with SIINFEKL-pulsed C57BL/6N splenocytes in complete RPMI. After two days, cells were expanded by diluting 2 fold into medium containing 100 pM IL-2. After four days, the cells were again expanded by 2 fold dilution into medium with IL-2. After one more day of culture, cells were harvested and spun through a 1.09 density Ficoll- Paque Plus gradient (GE Healthcare) to remove dead cells. Live cells were recovered, washed twice in complete medium and resuspended at 1 million/ml in complete medium with 100pM IL-2. Cells were used for experiments between 6 and 8 days after primary stimulation. The ppERK response to SRC and MEK inhibition was measured using primary OT-1 T-lymphocytes activated with RMA-S APCs. RMA-S cells were suspended in culture with 1 nM SIINFEKL peptide for 2 h at 37C, 5\% CO\textsubscript{2}, and on a rotator to guarantee mixing. During this time we labelled OT-1 cells with an amine-reactive dye, CTV, according to the manufacture’s protocol (Molecular Probes). We rested the OT-1 cells one hour after CTV staining, and then distributed them in a 96-well v-bottom plate. Each well was given various doses of SRC inhibitor and MEK inhibitor and kept at 37C for 5 min. Following the 5 min exposure to the inhibitors, we added the peptide pulsed RMA-S (10 RMA-S to 1 OT-1 T cell) and pelleted by centrifugation for 10 s at 460 rcf at room temperature. This step guaranteed that both cell types, OT-1 and RMA-S, came into contact. The cells were allowed to activate for 10 min, followed by fixing on ice in 2\% PFA, and then permeabilized and stored in 90\% MeOH at  -20C. APCs were pulsed with serial dilutions of OVA or variant peptides for 2 hr at 37C, then washed with T cell medium at the time of harvest, and resuspended with anti-CD8α (53-6.72)-Fab-coated T cells in their conditioned media in a V-bottom 96-well plate (Corning). Fab-coating was performed 10 min before cell use by incubating T cells with 10 μg/ml of Fab fragment. T:APC cell contacts were synchronized using a quick centrifugal spin (10s at 400g). Plates containing T:APC conjugates were placed on a water bath at 37C and incubated for 5 min. Supernatants were then discarded, T:APC conjugates disrupted by vortexing, and cells resuspended in ice-cold 4\% paraformaldehyde for 15 min. Cells were then permeabilized with ice-cold 90\% methanol for 15 min on ice, and washed twice with FACS buffer. 
 
 \section*{Results - experiments}
 
@@ -283,38 +288,38 @@ The authors declare that there are no conflicts of interest.
 \subsection*{Finding the extrema of a log-normal mixture}
 It is possible to discern between one or three extrema of the distribution $P(\log I)$, corresponding to one or two modes (respectively) by counting the number of solutions for $\frac{d}{d\log I}P(\log I) = 0$. Similarly, $\frac{d}{dI}Q(I)=0$ can have either one or three solutions. This raises the possibility of there being three extrema (two modes) for $P(\log I)$ whereas only one mode in $Q(I)$. We explicitly evaluate the extrema of the mixture of log-normal distributions by solving,
 %
-\bea \nonumber
+\begin{eqnarray} \nonumber
   \left.\frac{d P(y)}{dy} \right\vert_{y=y_*}&=&
   -\frac{(y_* - y_1)}{\sigma_1^2} \frac{(1-\alpha)}{\sqrt{2\pi}\sigma_1}  \gauss{1}{y_1}{y} -
   \frac{(y_* - y_2)}{\sigma_2^2} \frac{(\alpha)}{\sqrt{2\pi}\sigma_2} \gauss{2}{y_2}{y}\nonumber\\
   &=& 0\nonumber
-\eea
+\end{eqnarray}
 %
 which by algebraic rearrangement,
 %
-\be 
-  \label{eq:extremaP}
+\begin{equation} 
   \underbrace{\frac{(y_* - y_1) / \sigma_1^2}{(y_2-y_*)/\sigma_2^2}}_{B_3(y_*)} =
     \underbrace{\frac{\sigma_1}{\sigma_2}
     \left(\frac{\alpha}{1-\alpha}\right)
     e^{\frac{(y_*-y1)^2}{2\sigma_1 ^2}}\gauss{2}{y_2}{y_*}}_{A(y_*)}\,,
-\ee
+\label{eq:extremaP}
+\end{equation}
 %
 provides a more transparent form.  
 
 Here we refer to the left-hand-side and right-hand-side as $B_3(y)$ and $A(y)$, respectively. In like, computing the extrema of the linear scale distribution amounts to $\left.\frac{d Q(I)}{dI} \right\vert_{\log I= y_*} = 0$, which by change of variable is equivalent to,
 %
-\be
-\label{eq:QExtremaStrange}
+\begin{equation}
 P(y_*) = \left.\frac{d P(y)}{dy}\right\vert_{y = y_*}\,,
-\ee
+\label{eq:QExtremaStrange}
+\end{equation}
 %
 and by substitution,
 %
-\be
-  \label{eq:extremaQ}
+\begin{equation}
   \underbrace{\frac{\frac{y_*-y_1}{\sigma_1^2}+1}{\frac{y_2-y_*}{\sigma_2^2}-1}}_{B_1(y_*)} = A(y_*) 
-\ee
+  \label{eq:extremaQ}
+\end{equation}
 %
 We refer to the quantity on the left-hand-side, $B_1(y)$.
 
