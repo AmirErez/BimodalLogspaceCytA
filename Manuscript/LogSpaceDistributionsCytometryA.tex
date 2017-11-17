@@ -1,7 +1,7 @@
 %% Run LaTeX on this file several times to get Table of Contents,
 %% cross-references, and citations.
 
-\documentclass[11pt,a4paper,final]{article}
+\documentclass[11pt,a4paper,draft]{article}
 \usepackage{setspace}
 \usepackage{hyperref}
 \doublespacing
@@ -97,8 +97,10 @@ The rest of this paper is composed of two parts. In the first part, we point out
 
 \newpage
 
-\section*{Methods - theory}
-We focus this \emph{Methods} section on the theoretical aspect of this work. Brief details regarding the experimental methods can be found at the end of this section.
+\section*{Methods}
+In this \emph{Methods} section we present, in two detailed sections, the theoretical and experiment techniques used in our study. 
+
+\subsection*{Theory}
 
 \smallskip
 Given the pdf $P(\log I)$, one can formally derive $Q(I)$ as \cite{Mukhopadhyay2000},
@@ -123,7 +125,7 @@ In Fig.~\ref{fig:PlotsLinearLog}, to illustrate with typical measurement values,
 
 \begin{figure}[!ht]
  \centering
-  \includegraphics[clip,width=1\hsize]{Fig1.png}
+%  \includegraphics[clip,width=1\hsize]{Fig1.tif}
   \caption{\textbf{Log-normal mixture showing the mismatch in the number of peaks.} \textbf{Top row, red:} $P(\log I)$ vs. $\log I$ normalized to max. \textbf{Middle row, magenta:} $Q(I)$ vs. $I$ normalized to max, and plotted on a narrower range. \textbf{Bottom row, blue:} $Q(I)$ vs. $\log I$ normalized to max, rescaling the x-axis as in Ref.~\cite{Novo2008}. In the central column where $\sigma_1=\sigma_2=0.8$, $P(\log I)$ shows explicit bimodality whereas $Q(I)$ is unimodal. \textbf{Right column:} in this case, the variance $\sigma^2$ is large enough (see Eq.~\ref{eq:Plogy3Maxima}) that $P(\log I)$ has only one mode even though it is modeled as a mixture. In all cases: $I_1=100,\,I_2=1000,\,\alpha=0.5$ varying $\sigma_{1,2}=\{0.4,0.8,1.2\}$ (left to right columns, respectively). Leftmost column shows axes. }
   \label{fig:PlotsLinearLog}
 \end{figure}
@@ -147,7 +149,7 @@ In Fig.~\ref{fig:ExtremaSolutions}, we present an example of this graphical meth
 
 \begin{figure}[!ht]
  \centering
-  \includegraphics[clip,width=1\hsize]{Fig2.png}
+%  \includegraphics[clip,width=1\hsize]{Fig2.tif}
   \caption{\textbf{Graphical solution to count the number of extrema.} We test our peak counting method, based on the same equations as in Fig.~\ref{fig:PlotsLinearLog}, but with additional settings. (Vertical axis represents the functions $A, B_1,B_3$ according to the legend). When the red (blue) curves intersect the dashed black line, $P(\log I)$ ($Q(I)$) are extremized. Dashed black: $A(y)$, blue: $B_1(y)$ and red: $B_3(y)$. The mismatch between the number of extrema of $P(\log I)$ and $Q(I)$ is apparent when the red curve intersects $A$ at 3 points, whereas the blue curve only intersects $A$ once. In both cases, the loci of the extrema are different for the two distributions. The plots along the diagonal (which correspond to the cases in Fig.~\ref{fig:PlotsLinearLog}) show the case $\sigma_1=\sigma_2$ which simplifies $A(y)$ to a straight line (the general case being a parabola) in these axes.}
   \label{fig:ExtremaSolutions}
 \end{figure}
@@ -180,7 +182,7 @@ These data with their respective MIFlowCyt checklists are available in {\small
 \end{itemize} 
 All are accessible in {\small\href{https://github.com/AmirErez/BimodalLogspaceCytA}{github.com/AmirErez/BimodalLogspaceCytA}}.
 We briefly sketch the methods for each of the two experiments:
-\subsubsection*{Experiment 1:} Primary mouse T lymphocytes (OT-1) were activated ex vivo and cultured. OT-1 cells were activated by peptide (SIINFEKL) treated and irradiated (3,000 RAD) primary antigen presenting cells (APCs) from a C57BL/6 mouse. OT-1 cells were labeled with an amine-reactive dye, CTV, according to the manufacture’s protocol (Molecular Probes) for in silico identification. Cells were allowed to rest for one hour after CTV staining, and then distributed in a 96-well v-bottom plate. Cells were then incubated with unique doses of either SRC or MEK inhibitor at a temperature of $37^o$C for 5 minutes. After which,  we added the peptide pulsed APCs (10 APCs to 1 OT-1 T cell) and pelleted mixture of cells by centrifugation for 10 s at 460 rcf at room temperature.  The pellet was then incubated at a temperature of $37^o$C for 10 minutes, followed by 15 minutes of chemical fixing with 2\% PFA on ice and then permeabilization with ice cold 90\% MeOH. Samples were kept at a temperature of $-20^o$C until labeling for FCM.
+\subsubsection*{Experiment 1:} Primary mouse T lymphocytes (OT-1) were activated ex vivo and cultured. OT-1 cells were activated by peptide (SIINFEKL) treated and irradiated (3,000 RAD) primary antigen presenting cells (APCs) from a C57BL/6 mouse. OT-1 cells were labeled with an amine-reactive dye, CTV, according to the manufacture’s protocol (Molecular Probes) for in silico identification. Cells were allowed to rest for one hour after CTV staining, and then distributed in a 96-well v-bottom plate. Cells were then incubated with unique doses of SRC inhibitor Dasatinib at a temperature of $37^o$C for 5 minutes. After which,  we added the peptide pulsed APCs (10 APCs to 1 OT-1 T cell) and pelleted mixture of cells by centrifugation for 10 s at 460 rcf at room temperature.  The pellet was then incubated at a temperature of $37^o$C for 10 minutes, followed by 15 minutes of chemical fixing with 2\% PFA on ice and then permeabilization with ice cold 90\% MeOH. Samples were kept at a temperature of $-20^o$C until labeling for FCM.
 
 \subsubsection*{Experiment 2:} C57BL/6N splenocytes were pulsed for 2hr with 100nM SIINFEKL peptide, then irradiated (3000RAD), washed once and used as stimulator/feeder cells. OT-1 lymphocytes were harvested from auxiliary, brachial and inguinal lymph nodes as well as spleen (splenocytes were treated with ACK lysis buffer to remove red blood cells), and mixed with SIINFEKL-pulsed C57BL/6N splenocytes in complete RPMI. After two days, cells were expanded by diluting 2 fold into medium containing 100 pM IL-2. After four days, the cells were again expanded by 2 fold dilution into medium with IL-2. After one more day of culture, cells were harvested and spun through a 1.09 density Ficoll- Paque Plus gradient (GE Healthcare) to remove dead cells. Live cells were recovered, washed twice in complete medium and resuspended at 1 million/ml in complete medium with 100pM IL-2. Cells were used for experiments between 6 and 8 days after primary stimulation. The ppERK response to SRC and MEK inhibition was measured using primary OT-1 T-lymphocytes activated with RMA-S APCs. RMA-S cells were suspended in culture with 1 nM SIINFEKL peptide for 2 h at 37 $^o$C, 5\% CO\textsubscript{2}, and on a rotator to guarantee mixing. During this time we labelled OT-1 cells with an amine-reactive dye, CTV, according to the manufacture’s protocol (Molecular Probes). We rested the OT-1 cells one hour after CTV staining, and then distributed them in a 96-well v-bottom plate. Each well was given various doses of SRC inhibitor and MEK inhibitor and kept at 37 $^o$C for 5 min. Following the 5 min exposure to the inhibitors, we added the peptide pulsed RMA-S (10 RMA-S to 1 OT-1 T cell) and pelleted by centrifugation for 10 s at 460 rcf at room temperature. This step guaranteed that both cell types, OT-1 and RMA-S, came into contact. The cells were allowed to activate for 10 min, followed by fixing on ice in 2\% PFA, and then permeabilized and stored in 90\% MeOH at  -20 $^o$C. APCs were pulsed with serial dilutions of OVA or variant peptides for 2 hr at 37$^o$C, then washed with T cell medium at the time of harvest, and resuspended with anti-CD8α (53-6.72)-Fab-coated T cells in their conditioned media in a V-bottom 96-well plate (Corning). Fab-coating was performed 10 min before cell use by incubating T cells with 10 μg/ml of Fab fragment. T:APC cell contacts were synchronized using a quick centrifugal spin (10s at 400g). Plates containing T:APC conjugates were placed on a water bath at 37$^o$C and incubated for 5 min. Supernatants were then discarded, T:APC conjugates disrupted by vortexing, and cells resuspended in ice-cold 4\% paraformaldehyde for 15 min. Cells were then permeabilized with ice-cold 90\% methanol for 15 min on ice, and washed twice with FACS buffer. 
 
@@ -194,7 +196,7 @@ In experiment 1, the T-cells were inhibited by the SRC inhibitor Dasatinib. In F
 
 \begin{figure}[!ht]
  \centering
-  \includegraphics[width=1\linewidth]{Fig3.png}
+%  \includegraphics[width=1\linewidth]{Fig3.tif}
   \caption{\textbf{Analysis of experimental data reveals the effect we describe in a real scenario. }\textbf{(A)} Histogram of ppERK as plotted by FlowJo \cite{FlowJo}; \textbf{(B)} Histograms for $P(\log I)$ (red,dots) and $Q(I)$ (blue,dots) vs. $\log I$ as estimated from the data binned logarithmically. Note that plotting $Q(I)$ vs. $\log I$ is somewhat unusual but allows both $P$ and $Q$ to be plotted on the same axis. The red line shows the result of fitting $P(\log I)$ to a gaussian mixture model (Eq.~\ref{eq:LogNormalMix}), and the blue line is the estimate for $Q(I)$ from $P(\log I)$ according to Eq.~\ref{eq:P2Q}. The blue star indicates the location of the only maximum for $Q(I)$ obtained from Eq. \ref{eq:extremaQ}, despite the obvious two maxima in $P(\log I)$ (red). Hartigan's unimodality p-values for $\log I$ (red) and $I$ (blue) are taken directly from the data without binning, corroborating that $\log I$ is bimodal whereas $I$ is unimodal. \textbf{(C)} (Vertical axis represents the functions $A, B_1,B_3$ according to the legend). Graphic solution of the extrema conditions as in Fig.~\ref{fig:ExtremaSolutions} explicitly reveals the three solutions for $P(\log I_*)$ (red line intersects black dashed) as opposed to the single solution for $Q(I_*)$ (the blue line intersects the black dashed line up beyond the plotted area, solution also plotted as blue star in the middle plot), indicating that $Q(I)$ has only one mode.}
   \label{fig:Experiment}
 \end{figure}
@@ -233,7 +235,7 @@ Thus we demonstrate how by suitably accounting for cell-to-cell variability one 
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\linewidth]{Fig4.png}
+%    \includegraphics[width=1\linewidth]{Fig4.tif}
    \caption{\textbf{Analysis of experimental data with two correlated measurements.} \textbf{(A)} The joint distribution $P_2(\log I_{ppERK},\log I_{ERK1})$ as a heat map with its marginals plotted on the top and on its right. The correlation between ppERK and ERK1 levels is clear in the data. Dashed red (grey) lines are proposed manual gates according to the marginal (joint) distributions $P(\log I_{ppERK})$ $\left(P_2(\log I_{ppERK},\log I_{ERK1})\right)$. \textbf{(B)} Bayesian network depicted as a graphical model to show the flow of influence on the measurement of ppERK. The pair ERK1 and ppERK are in a template to suggest that there exist other pairs of correlated observables that depend on activation status and cell-to-cell variability.}
    \label{fig:ppERKvsERK1heatmap}
 \end{figure}
@@ -243,7 +245,7 @@ Thus we demonstrate how by suitably accounting for cell-to-cell variability one 
 \smallskip
 \begin{figure}
  \centering
-   \includegraphics[width=1\linewidth]{Fig5.png}  
+%   \includegraphics[width=1\linewidth]{Fig5.tif}  
   \caption{\textbf{By dividing ppERK readings by ERK1, we can ameliorate the mismatch between the two representations.} \textbf{(A)} $P(\log I_{ppERK})$ and $Q(I_{ppERK})$ vs. $\log I_{ppERK}$ (dots: data, lines: Gaussian mixture fit) together with \textbf{(B)} their extrema analysis, showing that the second mode in log ppERK does not exist if the data is linearly binned. \textbf{(C)} The same treatment but for $\tilde{I} = I_{ppERK}/I_{ERK1}$, \textbf{(D)} shows that both $\tilde{I}$ and $\log \tilde{I}$ have two modes, thus normalizing ppERK levels by total ERK1 maintains the bimodal structure both in $P(\log \tilde{I})$ and in $Q(\tilde{I})$. In (B) and (D), the vertical axis represents the functions $A, B_1,B_3$ according to the legend.}
   \label{fig:NormppERKbyERK}
 \end{figure}
@@ -323,7 +325,7 @@ As a check for the predictive power of Hartigan's test with regards to experimen
 
 \begin{figure}[!ht]
  \centering
- \includegraphics[clip,width=1\hsize]{Fig6.png}
+% \includegraphics[clip,width=1\hsize]{Fig6.tif}
   \caption{\textbf{Testing Hartigan's p-value $p_u$ for unimodality on a weakly bimodal log-normal mixture.} The heat-map shows $p_u$ as a function of the number of bootstrap tests and number of events in each test, for $\sigma_1=0.4$ and $\sigma_2=0.8$ as in Fig.~\ref{fig:ExtremaSolutions}(top,middle). With less than $\sim10^5$ events, Hartigan's test for this case may misidentify the number of peaks.}
   \label{fig:CheckHartigan}
 \end{figure}
@@ -331,7 +333,7 @@ As a check for the predictive power of Hartigan's test with regards to experimen
 \subsection*{Relation between ERK1 level and activation status}
 \begin{figure}[!htb]
  \centering
-   \includegraphics[width=1\linewidth]{Fig7.png}  
+%   \includegraphics[width=1\linewidth]{Fig7.tif}  
   \caption{{\bf Test for weak dependence of ERK1 and activation status.} Whereas independence implies that $P(\log ERK1) = P(\log ERK1 \vert Activation)$, in fact there is a weak dependence between them regardless of whether we employ a vertical (red, defined by threshold value $ppERK_*$) or a diagonal (grey) gate (the diagonal gate showing a weaker dependence); this is observed directly by noting that the different distributions in Fig.~\ref{S1_Fig} do not lie on top of each other. To quantify this difference, the inset shows the mutual information between $P(\log ERK1)$ and $P(\log ERK1 | Activation)$, with the circle pointing out the particular concentration of stimulus (out of all concentrations used in Ref.~\cite{Feinerman2008}) we chose to plot in this example. The chosen concentration has the highest mutual information, {\it i.e.}, the lowest ability to discern between the active and inactive states.}
   %\caption{\textbf{By dividing ppERK readings by ERK1, we can ameliorate the mismatch between the two representations.} \textbf{(A)} $P(\log I)$ and $Q(I)$ vs. $\log I$ (dots: data, lines: gaussian mixture fit) together with \textbf{(B)} their extrema analysis, showing that the second mode in log ppERK does not exist if the data is linearly binned. \textbf{(C)} The same treatment but for $\tilde{I} = I_{ppERK}/I_{ERK1}$, \textbf{(D)} shows that both $\tilde{I}$ and $\log \tilde{I}$ have two modes, thus normalizing ppERK levels by total ERK1 maintains the bimodal structure both in $P(\log \tilde{I})$ and in $Q(\tilde{I})$. }
   \label{S1_Fig}
