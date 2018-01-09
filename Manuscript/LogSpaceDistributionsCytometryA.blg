@@ -5,36 +5,36 @@ The style file: cytA.bst
 Database file #1: LogSpaceLatexPaper.bib
 You've used 35 entries,
             2358 wiz_defined-function locations,
-            762 strings with 11074 characters,
-and the built_in function-call counts, 39100 in all, are:
-= -- 4582
+            762 strings with 11073 characters,
+and the built_in function-call counts, 39086 in all, are:
+= -- 4580
 > -- 496
 < -- 1
 + -- 179
 - -- 144
-* -- 2571
-:= -- 3673
+* -- 2570
+:= -- 3672
 add.period$ -- 103
 call.type$ -- 35
 change.case$ -- 33
 chr.to.int$ -- 0
 cite$ -- 35
-duplicate$ -- 4845
-empty$ -- 3163
+duplicate$ -- 4843
+empty$ -- 3162
 format.name$ -- 173
-if$ -- 8390
+if$ -- 8387
 int.to.chr$ -- 0
 int.to.str$ -- 35
 missing$ -- 346
 newline$ -- 176
 num.names$ -- 35
-pop$ -- 2273
+pop$ -- 2272
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
 skip$ -- 130
 stack$ -- 0
-substring$ -- 6257
+substring$ -- 6254
 swap$ -- 753
 text.length$ -- 1
 text.prefix$ -- 0
